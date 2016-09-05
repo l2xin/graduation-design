@@ -45,7 +45,7 @@ public class ProjectTool
     public static void BuildForAndroid()
     {
         SetRDMVersion();
-        SetProductName("ª∂¿÷∑…––∆Â");
+        SetProductName("");
         SetAPKName();
         SetKeyStore();
         BuildOptions ops = SetBuildAPKOption();
@@ -56,7 +56,7 @@ public class ProjectTool
     public static void BuildForAndroidForETC()
     {
         SetRDMVersion();
-        SetProductName("ª∂¿÷∑…––∆Â");
+        SetProductName(" ");
         SetAPKName();
         SetKeyStore();
         BuildOptions ops = SetBuildAPKOption();
