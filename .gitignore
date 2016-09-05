@@ -3,3 +3,9 @@
 ################################################################################
 
 /Docs/2017版本.rar
+/Client/Framework/Library/
+/Client/Framework/Temp/
+*.csproj
+*.userprefs
+*.unityproj
+*.DS_Store
