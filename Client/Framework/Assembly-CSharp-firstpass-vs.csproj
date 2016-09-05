@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{3A1B43A0-276E-34FB-197E-1ACDE9001A0F}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_3;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\ReadMe.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\CommandKeys.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\ICommand.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\ICommandBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\ICommandBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\api\IPooledCommandBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\Command.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\CommandBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\CommandBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\CommandException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\EventCommand.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\EventCommandBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\command\impl\SignalCommandBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\ContextEvent.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\ContextExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\ContextKeys.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\ContextStartupFlags.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\IContext.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\IContextView.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\api\ICrossContextCapable.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\Context.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\ContextException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\ContextView.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\CrossContext.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\CrossContextBridge.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\context\impl\MVCSContext.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\api\DispatcherExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\api\IDispatcher.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerProvider.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\api\ITriggerable.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventCallbackType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\EventDispatcherExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEvent.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\api\IEventDispatcher.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcher.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\EventDispatcherException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\eventdispatcher\impl\TmEvent.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\dispatcher\impl\DispatcherException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\implicitBind\ImplementorAttribute.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\implicitBind\api\IImplicitBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\implicitBind\impl\ImplicitBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\InjectAttribute.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\ICrossContextInjectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\IInjectionBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\IInjector.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\IInjectorFactory.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingScope.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\InjectionBindingType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\api\InjectionExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\CrossContextInjectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\InjectionBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\InjectionException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\Injector.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\injector\impl\InjectorFactory.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\IMediationBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\IMediator.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\IView.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\MediationEvent.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\api\MediationExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\BubbleEventHelper.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\EventMediator.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\EventView.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\MediationBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\MediationException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\Mediator.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\mediation\impl\View.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\api\IPool.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\api\IPoolable.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\api\PoolExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\api\PoolInflationType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\api\PoolOverflowBehavior.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\impl\Pool.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\pool\impl\PoolException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\api\IReflectedClass.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\api\IReflectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\api\ReflectionExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectedClass.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\reflector\impl\ReflectionException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\api\ISequenceCommand.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\api\ISequencer.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\api\SequencerExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequenceCommand.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\EventSequencer.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\SequenceCommand.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\Sequencer.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\sequencer\impl\SequencerException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\signal\api\IBaseSignal.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\signal\api\SignalExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\signal\impl\BaseSignal.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\signal\impl\Signal.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\signal\impl\SignalException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\BinderExceptionType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\BindingConst.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\BindingConstraintType.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\IBinder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\IBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\IInstanceProvider.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\IManagedList.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\api\ISemiBinding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\impl\Binder.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\impl\BinderException.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\impl\Binding.cs" />
+     <Compile Include="Assets\Plugins\StrangeIoC\scripts\strange\framework\impl\SemiBinding.cs" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_first_btn_back_bkg.xml" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\UniMerge\readme.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_two_show.xml" />
+     <None Include="Assets\NGUI\ReadMe - 3.7.8.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_web.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_browser_dialog_btn_cancel_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\values-land\msdk_thrdcall_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_tmassistant_sdk_white_list_dlg.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_more_dialog_enter.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_dlg_sheet.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_titlebar_btn_more_bkg.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_config.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_three_show.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_positive_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_activity_push_in.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_second_btn_back_bkg.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\ReadMe.txt" />
+     <None Include="Assets\PlayModePersist\readme.txt" />
+     <None Include="Assets\Plugins\Android\assets\TSDKConfig\michall.xml" />
+     <None Include="Assets\Plugins\Android\res\values-land\msdk_thrdcall_config.xml" />
+     <None Include="Assets\Plugins\Android\res\values-hdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_image_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_web_url.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Plugins\Android\res\values\styles.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_out_to_right.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values-mdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_pressed.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_web.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_style.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_styles.xml" />
+     <None Include="Assets\Plugins\Android\res\values-xhdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_third_btn_back_bkg.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_two_default.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_roll.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_in_from_left.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_toolbar_btn_fg.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
+     <None Include="Assets\Plugins\Android\assets\plugins\qmi\config.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_titlebar_btn_back_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_positive_btn_pressed.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-ldpi\com_tencent_tmassistant_sdk_white_list_dlg.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_image.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_image.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
+     <None Include="Assets\Plugins\Android\assets\qmi_config.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_in_from_right.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_negtive_btn_pressed.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\com_tencent_tmassistant_sdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_image_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Plugins\DOTween\readme.txt" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_out_to_left.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_two_default.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_page_round_top_bkg.xml" />
+     <None Include="Assets\Scripts\Apollo\Core\Service\HTTPClient\tdr_apollo_http_object\http_struct.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_negtive_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\values-hdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_text.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_two_show.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\LICENSE-2.0.txt" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_more_dialog_exit.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_pregress_button.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_strings.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\README.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_three_default.xml" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_window.xml" />
+     <None Include="Assets\Plugins\iOS\WGPlatformResources.bundle\WebViewResources\WebViewJavascriptBridge.js.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_activity_push_out.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_web_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
+     <None Include="Assets\Plugins\Android\res\values-xhdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_three_show.xml" />
+     <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_text_url.xml" />
+     <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_alert_page_round_top_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_three_default.xml" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values-mdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_dlg_griditem.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_bkg.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/Plugins/DOTween/DOTween.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

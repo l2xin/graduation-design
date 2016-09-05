@@ -1,0 +1,31 @@
+{
+    "group": "ApolloFrameworks",
+    "libs": 
+    [
+	"libz.dylib",
+	"libstdc++.dylib",
+	"libz.1.1.3.dylib",
+	"libsqlite3.dylib",
+	"libxml2.dylib",
+	"libstdc++.6.dylib"
+    ],
+    "frameworks":
+     [
+	"CoreTelephony.framework",
+	"Foundation.framework",
+	"MobileCoreServices.framework",
+	"CoreData.framework",
+	"Security.framework",
+	"StoreKit.framework",
+	"JavaScriptCore.framework",
+	"AdSupport.framework",
+	],
+    "headerpaths": [],
+    "files": 
+    [
+	],
+    "folders": [],    
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

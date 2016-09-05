@@ -1,0 +1,11 @@
+{
+    "group": "",
+    "libs": [],
+    "frameworks": [],
+    "headerpaths": [],
+    "files": ["../../../Plugins/IOS/WGPlatformResources.bundle"],
+    "folders": [],    
+    "excludes": [],
+    "compiler_flags": [],
+    "linker_flags": []
+}

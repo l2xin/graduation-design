@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{2FC59FCE-BCB1-13D3-FB79-5DD1AF79A2AF}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_3;UNITY_4_6;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;ENABLE_DUCK_TYPING</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Editor\XUPorter\MiniJSON\MiniJSON.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXBuildFile.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXBuildPhase.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXDictionary.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXFileReference.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXGroup.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXList.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXObject.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXParser.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXProject.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXSortedDictionary.cs" />
+     <Compile Include="Assets\Editor\XUPorter\PBX Editor\PBXVariantGroup.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCBuildConfiguration.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCConfigurationList.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCMod.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCPlist.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCProject.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XClass.cs" />
+     <Compile Include="Assets\Editor\XUPorter\XCodePostProcess.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvDatabaseInspector.cs" />
+     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvFindItem.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\ActiveAnimationEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\BMFontReader.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\ComponentSelector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\EventDelegateDrawer.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\EventDelegateEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\FreeType.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIContextMenu.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIEditorExtensions.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIEditorTools.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIHandles.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIHelp.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIJson.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUIMenu.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUISelectionTools.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUISettings.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUISnap.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\NGUITransformInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\PropertyBindingEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\PropertyReferenceDrawer.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\SpriteSelector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenAlphaEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenColorEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenFOVEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenHeightEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenOrthoSizeEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenPositionEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenRotationEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenScaleEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenTransformEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenVolumeEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\TweenWidthEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UI2DSpriteEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIAnchorEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIAtlasInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIAtlasMaker.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIBasicSpriteEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonColorEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonKeysEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonMessageEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UICameraEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UICameraTool.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UICreateNewUIWizard.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UICreateWidgetWizard.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIDragObjectEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIDrawCallInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIDrawCallViewer.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIEventTriggerEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIFontInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIFontMaker.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIForwardEventsEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIGridEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIImageButtonInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIInputEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIKeyNavigationEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UILabelInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UILocalizeEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPanelInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPanelTool.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPlayAnimationEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPlayTweenEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPopupListInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIPrefabTool.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIProgressBarEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIRectEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIRootEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIScrollBarEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIScrollViewEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UISliderEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UISnapshotPointEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UISpriteAnimationInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UISpriteInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIStretchEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UITableEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UITextureInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UITexturePacker.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIToggleInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UITweenerEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
+     <Compile Include="Assets\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPAutoOpen.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPAutoPersistWindow.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPComponentSetting.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPContext.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPDefaultPropertiesInfo.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPDefaults.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPEditorWindow.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPExcludedPropertiesInfo.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPExclusions.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPGOSetting.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPLocalStorageManager.cs" />
+     <Compile Include="Assets\PlayModePersist\Editor\PPMenuOptions.cs" />
+     <Compile Include="Assets\UniMerge\Editor\ObjectMerge.cs" />
+     <Compile Include="Assets\UniMerge\Editor\SceneMerge.cs" />
+     <Compile Include="Assets\UniMerge\Editor\UniMergeConfig.cs" />
+     <Compile Include="Assets\UniMerge\Editor\Util.cs" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_first_btn_back_bkg.xml" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
+     <None Include="Assets\UniMerge\readme.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_two_show.xml" />
+     <None Include="Assets\NGUI\ReadMe - 3.7.8.txt" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
+     <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_web.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_browser_dialog_btn_cancel_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\values-land\msdk_thrdcall_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_tmassistant_sdk_white_list_dlg.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_more_dialog_enter.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_dlg_sheet.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_titlebar_btn_more_bkg.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_config.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_three_show.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_positive_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_activity_push_in.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_second_btn_back_bkg.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\scripts\strange\extensions\ReadMe.txt" />
+     <None Include="Assets\PlayModePersist\readme.txt" />
+     <None Include="Assets\Plugins\Android\assets\TSDKConfig\michall.xml" />
+     <None Include="Assets\Plugins\Android\res\values-land\msdk_thrdcall_config.xml" />
+     <None Include="Assets\Plugins\Android\res\values-hdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_image_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_web_url.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Plugins\Android\res\values\styles.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_out_to_right.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_thrdcall_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values-mdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_pressed.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_web.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_style.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_tmassistant_sdk_styles.xml" />
+     <None Include="Assets\Plugins\Android\res\values-xhdpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 1.shader" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_ad_third_btn_back_bkg.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_two_default.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored 3.shader" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_roll.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_in_from_left.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_toolbar_btn_fg.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 2.shader" />
+     <None Include="Assets\Plugins\Android\assets\plugins\qmi\config.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\msdk_thrdcall_titlebar_btn_back_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_positive_btn_pressed.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-ldpi\com_tencent_tmassistant_sdk_white_list_dlg.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_image.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-port\com_tencent_msdk_notice_image.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 3.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
+     <None Include="Assets\Plugins\Android\assets\qmi_config.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_strings.xml" />
+     <None Include="Assets\Plugins\Android\res\values\com_tencent_msdk_colors.xml" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_in_from_right.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\msdk_ad_dimens.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_negtive_btn_pressed.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\com_tencent_tmassistant_sdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_image_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Plugins\DOTween\readme.txt" />
+     <None Include="Assets\Plugins\Android\res\anim\unipay_anim_out_to_left.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_two_default.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_page_round_top_bkg.xml" />
+     <None Include="Assets\Scripts\Apollo\Core\Service\HTTPClient\tdr_apollo_http_object\http_struct.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_negtive_btn.xml" />
+     <None Include="Assets\Plugins\Android\res\values-hdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_text.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_two_show.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\LICENSE-2.0.txt" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_more_dialog_exit.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_tmassistant_sdk_pregress_button.xml" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_strings.xml" />
+     <None Include="Assets\Plugins\StrangeIoC\README.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_three_default.xml" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_window.xml" />
+     <None Include="Assets\Plugins\iOS\WGPlatformResources.bundle\WebViewResources\WebViewJavascriptBridge.js.txt" />
+     <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\Plugins\Android\res\anim\thrdcall_activity_push_out.xml" />
+     <None Include="Assets\Plugins\Android\res\layout-land\com_tencent_msdk_notice_web_url.xml" />
+     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
+     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
+     <None Include="Assets\Plugins\Android\res\values-xhdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Plugins\Android\res\values\msdk_ad_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_stop_three_show.xml" />
+     <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\Plugins\Android\res\layout\com_tencent_msdk_notice_text_url.xml" />
+     <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_alert_page_round_top_bkg.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_ad_pause_three_default.xml" />
+     <None Include="Assets\Plugins\Android\res\values-ldpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\values-mdpi\com_tencent_msdk_dimens.xml" />
+     <None Include="Assets\Plugins\Android\res\layout\msdk_thrdcall_dlg_griditem.xml" />
+     <None Include="Assets\Plugins\Android\res\drawable\com_tencent_msdk_notice_popup_round_bottom_bkg.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/Plugins/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/Plugins/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityVS.VersionSpecific">
+ <HintPath>F:/TSDK_proj/UnityDemo/client/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{3A1B43A0-276E-34FB-197E-1ACDE9001A0F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{A2859A56-AB4A-51F9-60BB-1B6FC96E8C70}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
