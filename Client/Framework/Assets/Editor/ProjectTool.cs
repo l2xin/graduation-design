@@ -24,6 +24,8 @@ public class ProjectTool
         return names.ToArray();
     }
 
+
+
     private static string GetCommandLineArg(string name)
     {
         string[] args = System.Environment.GetCommandLineArgs();
