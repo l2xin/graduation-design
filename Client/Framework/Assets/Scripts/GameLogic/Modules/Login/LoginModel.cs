@@ -108,8 +108,8 @@ namespace GameLogic
         {
         }
 
-        private NetWorkEventQueue mNetMsgQueue;
-        private PlayerEventQueue mPlayerEventQueue;
+        private EventHandlerQueue mNetMsgQueue;
+        private EventHandlerQueue mPlayerEventQueue;
         private GameScene mScene;
 
         private bool mIsHandleWakeUpInfo = false;
@@ -125,11 +125,11 @@ namespace GameLogic
             base.Destroy();
             if (mNetMsgQueue != null)
             {
-                mNetMsgQueue.RemoveAllEvent();
+                mNetMsgQueue.RemoveAll();
             }
             if (mPlayerEventQueue != null)
             {
-                mPlayerEventQueue.RemoveAllEvent();
+                mPlayerEventQueue.RemoveAll();
             }
             mScene = null;
         }
@@ -137,14 +137,14 @@ namespace GameLogic
 
         private void InitNetMsg()
         {
-            mNetMsgQueue = new NetWorkEventQueue();
-            mNetMsgQueue.AddEvent(NetWorkEventType.NE_LoginSuccess, RspTSDKLoginSuccess);
-            mNetMsgQueue.AddEvent(NetWorkEventType.NE_LoginFailed, OnLoginFail);
+            mNetMsgQueue = new EventHandlerQueue(NetworkEventProcessor.GetInstance());
+            mNetMsgQueue.Add((int)NetWorkEventType.NE_LoginSuccess, RspTSDKLoginSuccess);
+            mNetMsgQueue.Add((int)NetWorkEventType.NE_LoginFailed, OnLoginFail);
         }
 
         public void RegisterEvent()
         {
-            mPlayerEventQueue = new PlayerEventQueue(PlayerManager.GetSingleton().pHero);
+            mPlayerEventQueue = new EventHandlerQueue(PlayerManager.GetSingleton().pHero.pEventManager);
         }
 
         public void RegisterSceneEvent()
@@ -152,21 +152,21 @@ namespace GameLogic
             mScene = SceneMachine.GetCurrentScene() as GameScene;
         }
 
-        public void LoginViewDestory(){ }
+        public void LoginViewDestory() { }
 
-        private void RspTSDKLoginSuccess(BaseEvent varEvt) { }
+        private void RspTSDKLoginSuccess(Air2000.Event varEvt) { }
 
-        private void OnLoginFail(BaseEvent varEvt)
+        private void OnLoginFail(Air2000.Event varEvt)
         {
             if (mScene != null)
             {
-                mScene.NotifySceneEvent(new SceneEvent(SceneEventType.SE_NotifyTSDKLoginFail));
+                mScene.NotifySceneEvent(new Air2000.Event((int)SceneEventType.SE_NotifyTSDKLoginFail));
             }
         }
 
         #region ClientEXECommond
         private bool mIsNotAllow = false;
-     
+
         #endregion
     }
 

@@ -50,6 +50,7 @@ namespace GameLogic
             {
                 SceneMachine.Update();
             }
+            ConnectionManager.GetInstance().Update();
             DetectionNetWork();
         }
 
@@ -57,7 +58,37 @@ namespace GameLogic
 
         void OnLevelWasLoaded()
         {
-            GlobalEventManager.GetSingleton().NotifyGlobalEvent(new GlobalEvent(GlobalEventType.GE_LevelWasLoaded));
+            ApplicationEventProcessor.GetInstance().Notify(new Air2000.Event((int)ApplicationEventType.GE_LevelWasLoaded));
+        }
+        void OnDestroy()
+        {
+            ConnectionManager.GetInstance().Destroy();
+        }
+        void OnGUI()
+        {
+            if (GUI.Button(new Rect(10, 10, 300, 40), "Send a test msg"))
+            {
+                Connection toLoginServer = ConnectionManager.GetInstance().GetConnection(ConnectionManager.ServerType.Logic);
+                if (toLoginServer != null)
+                {
+                    byte[] bytes = null;
+
+                    bytes = BitConverter.GetBytes(8888);
+                    toLoginServer.SendMessage(9009, bytes, 10000);
+                }
+            }
+
+            if (GUI.Button(new Rect(10, 60, 300, 40), "Send a test msg (Struct)"))
+            {
+                Connection toLoginServer = ConnectionManager.GetInstance().GetConnection(ConnectionManager.ServerType.Logic);
+                if (toLoginServer != null)
+                {
+                    byte[] bytes = null;
+
+                    bytes = BitConverter.GetBytes(8888);
+                    toLoginServer.SendMessage(9009, bytes, 10000);
+                }
+            }
         }
         #endregion
 
@@ -82,6 +113,8 @@ namespace GameLogic
 
         void OnResourceManagerInitialized()
         {
+            ConnectionManager.GetInstance().CreateConnection(ConnectionManager.ServerType.Logic, "127.0.0.1", 4999, null);
+
             ModelManager.GetSingleton().InitModel();
             AudioAdapter.Instance.Initialize();
 #if ASSETBUNDLE_MODE
@@ -132,7 +165,7 @@ namespace GameLogic
 
         #region external functions
 
-        public static GameContext GetSingleton()
+        public static GameContext GetInstance()
         {
             if (m_Instance == null)
             {

@@ -737,7 +737,7 @@ namespace Air2000
 
         #region member
         private static GameObjPool mInstance;
-        private GlobalEventQueue mGlobalEventQueue;//全局事件队列
+        private EventHandlerQueue mGlobalEventQueue;//全局事件队列
         private Transform mObjHolder;
         private Transform mGameObjectHolder;
         private Transform mTextAssetHolder;

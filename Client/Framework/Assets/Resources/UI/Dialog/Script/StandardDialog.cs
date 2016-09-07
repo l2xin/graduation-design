@@ -31,7 +31,7 @@ namespace Air2000.UI
         private float mTimeOut = 2.0f;
         // Use this for initialization
 
-        private EventDelegate.Callback mCloseCallback;
+        private DelegateNoParam mCloseCallback;
 
         void Start()
         {
@@ -76,7 +76,7 @@ namespace Air2000.UI
             mContents = varContents;
         }
 
-        public void SetCloseCallback(EventDelegate.Callback varCloseCallback)
+        public void SetCloseCallback(DelegateNoParam varCloseCallback)
         {
             mCloseCallback = varCloseCallback;
         }

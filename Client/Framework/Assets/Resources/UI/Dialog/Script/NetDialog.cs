@@ -37,7 +37,7 @@ public class NetDialog : MonoBehaviour
         //重新登录;
         if (varAction == DialogAction.OK)
         {
-            GameContext.GetSingleton().GotoScene(SceneType.LoginScene);
+            GameContext.GetInstance().GotoScene(SceneType.LoginScene);
             CloseDialog();
 
         }

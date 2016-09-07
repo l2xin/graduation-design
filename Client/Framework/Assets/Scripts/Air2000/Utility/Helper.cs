@@ -2,8 +2,8 @@
             // Copyright © 2015 Air2000
             // 
             // FileName: Helper.cs
-			// Describle: 功能性、公用、帮助型函数集
-			// Created By:  Neil
+			// Describle: Some helper function set.
+			// Created By:  hsu
 			// Date&Time:  2015/4/1 14:34:18
             // Modify History:
             //
@@ -24,9 +24,6 @@ using GTools.Character;
 
 namespace Air2000
 {
-
-
-
 
     public delegate void GameObjectCallback(GameObject obj);
 
@@ -112,15 +109,15 @@ namespace Air2000
             string[] values = v.Split(new string[] { "," }, StringSplitOptions.None);
             if (values.Length == 3)
             {
-				try
-				{
-					return new Vector3(Convert.ToSingle(values[0]), Convert.ToSingle(values[1]), Convert.ToSingle(values[2]));
-				}
+                try
+                {
+                    return new Vector3(Convert.ToSingle(values[0]), Convert.ToSingle(values[1]), Convert.ToSingle(values[2]));
+                }
                 catch
-				{
-					LogError("stringToVector3 Error ");
-					return Vector3.zero;
-				}
+                {
+                    LogError("stringToVector3 Error ");
+                    return Vector3.zero;
+                }
             }
 
             return Vector3.zero;
@@ -132,7 +129,7 @@ namespace Air2000
         public static bool IsWiFiSurroundings()
         {
 
-            if (Application.internetReachability== NetworkReachability.ReachableViaLocalAreaNetwork)
+            if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
             {
                 return true;
             }

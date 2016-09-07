@@ -6,7 +6,7 @@
 		// Date:20151010
 		// Modify History:
 //----------------------------------------------------------------*/
-Shader "NCSpeedLight/ImageEffect/GaussianBlur"
+Shader "Air2000/ImageEffect/GaussianBlur"
 {
 	Properties
 	{

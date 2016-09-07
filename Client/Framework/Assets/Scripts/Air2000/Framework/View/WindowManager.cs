@@ -117,6 +117,7 @@ namespace Air2000
     /// <param name="param">回传的参数</param>
     public delegate void OpenWindowCallBack(GameObject view, GTools.Res.ResourceLoadParam param);
 
+    public delegate void DelegateNoParam();
     /// <summary>
     /// 窗口管理
     /// </summary>
@@ -229,8 +230,8 @@ namespace Air2000
             }
         }
 
-        GlobalEventManager mGlobalEventManager;  // 监听界面打开/关闭;
-        GlobalEventQueue mGlobalEventQueue;
+        ApplicationEventProcessor mGlobalEventManager;  // 监听界面打开/关闭;
+        EventHandlerQueue mGlobalEventQueue;
 
         public GameObject pRootObject
         {
@@ -450,7 +451,7 @@ namespace Air2000
 
             string windowpath = Helper.Format("ui/{0}", varWindowName);
 
-            LoadAssetCallback callback = delegate(UnityEngine.Object obj, ResourceLoadParam varParam1)
+            LoadAssetCallback callback = delegate (UnityEngine.Object obj, ResourceLoadParam varParam1)
             {
                 GameObject LoadObject = obj as GameObject;
                 GameObject tempWindow = SetUI(LoadObject);
@@ -502,7 +503,7 @@ namespace Air2000
                 }
                 return;
             }
-            LoadAssetCallback OpenViewCallback = delegate(UnityEngine.Object obj, ResourceLoadParam resParam)
+            LoadAssetCallback OpenViewCallback = delegate (UnityEngine.Object obj, ResourceLoadParam resParam)
            {
                GameObject LoadObject = obj as GameObject;
                if (LoadObject == null)
@@ -766,7 +767,7 @@ namespace Air2000
         public void OpenSmallTipsDialog(string varContents)
         {
             //AudioManager.GetSingleton().PlayUIAudio(AudioName.AN_Warning);
-            OpenWindowCallBack tempCallback = delegate(GameObject varObj, ResourceLoadParam varParam)
+            OpenWindowCallBack tempCallback = delegate (GameObject varObj, ResourceLoadParam varParam)
             {
                 if (this == null)
                 {
@@ -792,7 +793,7 @@ namespace Air2000
         public void OpenBattleSmallDialog(string varContents)
         {
             //AudioManager.GetSingleton().PlayUIAudio(AudioName.AN_Warning);
-            OpenWindowCallBack tempCallback = delegate(GameObject varObj, ResourceLoadParam varParam)
+            OpenWindowCallBack tempCallback = delegate (GameObject varObj, ResourceLoadParam varParam)
             {
                 if (this == null)
                 {
@@ -823,9 +824,9 @@ namespace Air2000
             OpenStandardDialog(varContents, null);
         }
 
-        public void OpenStandardDialog(string varContents, EventDelegate.Callback varCloseCallback)
+        public void OpenStandardDialog(string varContents, DelegateNoParam varCloseCallback)
         {
-            OpenWindowCallBack tempCallback = delegate(GameObject varObj, ResourceLoadParam varParam)
+            OpenWindowCallBack tempCallback = delegate (GameObject varObj, ResourceLoadParam varParam)
             {
                 if (this == null)
                 {
@@ -895,7 +896,7 @@ namespace Air2000
         public void OpenConfirmDialog(string varTitle, string varContents, string varBtnOKName, string varBtnNameCancel, DialogActionDelegate varCallBack, object varParam, bool varIsShowCancle)
         {
 
-            OpenWindowCallBack tempCallback = delegate(GameObject varObj, ResourceLoadParam varParam2)
+            OpenWindowCallBack tempCallback = delegate (GameObject varObj, ResourceLoadParam varParam2)
             {
                 if (this == null)
                 {
@@ -989,7 +990,7 @@ namespace Air2000
             GameObject tempLoadObject = GetDialogCacheByName(viewName);
             if (tempLoadObject == null)
             {
-                LoadAssetCallback tempCallback = delegate(UnityEngine.Object obj, ResourceLoadParam varParam)
+                LoadAssetCallback tempCallback = delegate (UnityEngine.Object obj, ResourceLoadParam varParam)
                 {
                     GameObject tempObj = obj as GameObject;
                     if (tempObj == null)
@@ -1054,7 +1055,7 @@ namespace Air2000
         /// <param name="call"></param>
         public void OpenTipDialog(string tipTitle, string context, DialogTip.BtnCallback call)
         {
-            OpenWindowCallBack windowCall = delegate(GameObject view, ResourceLoadParam param)
+            OpenWindowCallBack windowCall = delegate (GameObject view, ResourceLoadParam param)
 {
     if (view != null)
     {
@@ -1232,7 +1233,7 @@ namespace Air2000
 
                 WindowChange();
 
-                NetWorkEventManager.GetSingleton().NotifyNetWorkEvent(new NetWorkEvent(NetWorkEventType.NE_NotifyRedChangePoint));
+                NetworkEventProcessor.GetInstance().Notify(new Event((int)NetWorkEventType.NE_NotifyRedChangePoint));
             }
             else
             {
@@ -2050,7 +2051,7 @@ namespace Air2000
             pos.y -= (Screen.height / 2.0f);
             pos *= pScreenScale;
 
-           
+
             return pos;
         }
 

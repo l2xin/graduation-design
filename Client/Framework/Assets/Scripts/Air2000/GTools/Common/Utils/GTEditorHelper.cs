@@ -25,7 +25,7 @@ namespace Air2000
 
         public static void DrawSeparator(float width, float height = 1)
         {
-            if (Event.current.type == EventType.Repaint)
+            if (UnityEngine.Event.current.type == EventType.Repaint)
             {
                 Texture2D tex = EditorGUIUtility.whiteTexture;
                 Rect rect = GUILayoutUtility.GetLastRect();

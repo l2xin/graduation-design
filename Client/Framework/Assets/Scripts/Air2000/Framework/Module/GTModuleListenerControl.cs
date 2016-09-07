@@ -15,29 +15,29 @@ using System.Text;
 
 namespace Air2000
 {
-    public abstract class GTModuleListenerControl : INetworkManagerListener, IModelListener, IViewListener
+    public abstract class GTModuleListenerControl : IModelListener, IViewListener
     {
         protected GTView mView;
         protected GTModel mModel;
-        protected GlobalEventManager mGlobalEventManager;
-        protected NetWorkEventManager mNetMsgEventManager;
-        protected GlobalEventQueue mGlobalMsgQueue;
-        protected NetWorkEventQueue mNetMsgQueue;
+        protected ApplicationEventProcessor mGlobalEventManager;
+        protected NetworkEventProcessor mNetMsgEventManager;
+        protected EventHandlerQueue mGlobalMsgQueue;
+        protected EventHandlerQueue mNetMsgQueue;
 
-        public GlobalEventManager pGlobalEventManager
+        public ApplicationEventProcessor pGlobalEventManager
         {
             get { return mGlobalEventManager; }
         }
-        public NetWorkEventManager pNetMsgEventManager
+        public NetworkEventProcessor pNetMsgEventManager
         {
             get { return mNetMsgEventManager; }
         }
-        public GlobalEventQueue pGlobalMsgQueue
+        public EventHandlerQueue pGlobalMsgQueue
         {
             get { return mGlobalMsgQueue; }
             set { mGlobalMsgQueue = value; }
         }
-        public NetWorkEventQueue pNetMsgQueue
+        public EventHandlerQueue pNetMsgQueue
         {
             get { return mNetMsgQueue; }
             set { mNetMsgQueue = value; }
@@ -54,10 +54,10 @@ namespace Air2000
             {
                 varModel.AddListener(this);
             }
-            mGlobalMsgQueue = new GlobalEventQueue();
-            mNetMsgQueue = new NetWorkEventQueue();
-            mGlobalEventManager = GlobalEventManager.GetSingleton();
-            mNetMsgEventManager = NetWorkEventManager.GetSingleton();
+            mGlobalMsgQueue = new EventHandlerQueue(ApplicationEventProcessor.GetInstance());
+            mNetMsgQueue = new EventHandlerQueue(NetworkEventProcessor.GetInstance());
+            mGlobalEventManager = ApplicationEventProcessor.GetInstance();
+            mNetMsgEventManager = NetworkEventProcessor.GetInstance();
         }
 
         #region Implement for IModelListener
@@ -76,10 +76,6 @@ namespace Air2000
         }
         public virtual void OnModelDestroyed()
         {
-            if (mNetMsgEventManager != null)
-            {
-                mNetMsgEventManager.RemoveListener(this);
-            }
             if (mModel != null)
             {
                 mModel.RemoveListener(this);
@@ -90,11 +86,11 @@ namespace Air2000
             }
             if (mNetMsgQueue != null)
             {
-                mNetMsgQueue.RemoveAllEvent();
+                mNetMsgQueue.RemoveAll();
             }
             if (mGlobalMsgQueue != null)
             {
-                mGlobalMsgQueue.RemoveAllEvent();
+                mGlobalMsgQueue.RemoveAll();
             }
         }
         public virtual void OnModelStateChanged(ModelState varModelState) { }
@@ -106,12 +102,6 @@ namespace Air2000
         public virtual void OnViewEnable() { }
         public virtual void OnViewDisable() { }
         public virtual void OnViewDestroy() { }
-        #endregion
-
-        #region Implement for INetworkManagerListener
-        public virtual void OnNetworkChanged() { }
-        public virtual void OnNetworkDisable() { }
-        public virtual void OnConnectedServer() { }
         #endregion
     }
 }

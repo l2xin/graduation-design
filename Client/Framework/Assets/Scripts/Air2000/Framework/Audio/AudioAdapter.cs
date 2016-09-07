@@ -75,7 +75,7 @@ namespace Air2000
         #region declarations
         private static AudioAdapter m_Instance;
         public static string GAME_SETTING_CONFIG_FILE = "GameSetting.bytes";
-        private GlobalEventQueue mGlobalMsgQueue;
+        private EventHandlerQueue mGlobalMsgQueue;
         private bool m_EnableMusic = true;
         private bool m_EnableSound = true;
         #endregion
@@ -95,8 +95,8 @@ namespace Air2000
         }
         public void Initialize()
         {
-            mGlobalMsgQueue = new GlobalEventQueue();
-            mGlobalMsgQueue.AddEvent(GlobalEventType.GE_LevelWasLoaded, OnLevelLoaded);
+            mGlobalMsgQueue = new EventHandlerQueue(ApplicationEventProcessor.GetInstance());
+            mGlobalMsgQueue.Add((int)ApplicationEventType.GE_LevelWasLoaded, OnLevelLoaded);
             ReadGameSettingConfig();
         }
         #endregion
@@ -117,7 +117,7 @@ namespace Air2000
         #endregion
 
         #region listen
-        private void OnLevelLoaded(BaseEvent evt)
+        private void OnLevelLoaded(Event evt)
         {
             if (m_EnableMusic)
             {

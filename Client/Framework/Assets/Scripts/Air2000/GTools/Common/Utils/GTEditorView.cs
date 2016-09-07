@@ -53,11 +53,11 @@ namespace Air2000
             EasyKey_AntiWithdrawal,
             EasyKey_SaveFile,
         }
-        public class EditorEvent : BaseEvent
+        public class EditorEvent : Event
         {
-            public EditorEvent(int evtID)
+            public EditorEvent(int evtID) : base(evtID)
             {
-                pEventID = evtID;
+                EventID = evtID;
             }
         }
 
@@ -71,7 +71,7 @@ namespace Air2000
             }
             public T GetData() { return mParam; }
         }
-        public class EditorEventBus : EventManager
+        public class EditorEventBus : EventProcessor
         {
             public void NotifyEvent(EditorEvent evt)
             {
@@ -79,28 +79,28 @@ namespace Air2000
                 {
                     return;
                 }
-                base.NotifyEvent(evt.pEventID, evt);
+                base.Notify(evt);
             }
 
-            public void RegisterEditorEvent(int evtID, EventFuntion func)
+            public void RegisterEditorEvent(int evtID, EventProcessorHandler func)
             {
                 if (func != null)
                 {
-                    base.RegisterMsgHandler(evtID, func);
+                    base.Register(evtID, func);
                 }
             }
 
-            public void UnRegisterEditorEvent(int evtID, EventFuntion func)
+            public void UnRegisterEditorEvent(int evtID, EventProcessorHandler func)
             {
                 if (func != null)
                 {
-                    base.UnRegisterMsgHandler(evtID, func);
+                    base.Unregister(evtID, func);
                 }
             }
 
             public void UnRegisterAllEvent()
             {
-                base.UnRegisterAllMsgHandlers();
+                base.UnregisterAll();
             }
         }
         #endregion
@@ -126,7 +126,7 @@ namespace Air2000
                 return;
             }
             GTEditorSubView subView = null;
-            if (AllSubViews.TryGetValue(view.ViewID, out  subView))
+            if (AllSubViews.TryGetValue(view.ViewID, out subView))
             {
                 return;
             }
@@ -404,7 +404,7 @@ namespace Air2000
         {
             if (EventBus != null)
             {
-                EventBus.UnRegisterAllMsgHandlers();
+                EventBus.UnRegisterAllEvent();
             }
             NotityAllSubView(EditorWindowEvtType.OnDestroy, null);
         }

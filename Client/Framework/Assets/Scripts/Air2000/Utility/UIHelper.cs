@@ -325,7 +325,7 @@ namespace Air2000
             if (varTrans != null)
             {
                 UITexture tempUITexture = varTrans.GetComponent<UITexture>();
-                GameLogic.GameContext.GetSingleton().StartCoroutine(SetTextureToUrl(url, tempUITexture));
+                GameLogic.GameContext.GetInstance().StartCoroutine(SetTextureToUrl(url, tempUITexture));
             }
         }
 
@@ -405,7 +405,7 @@ namespace Air2000
                     UniGifTexture tempTexture2 = tempTra2.GetComponent<UniGifTexture>();
                     if (tempTra1 != null && tempTra2 != null)
                     {
-                        GameLogic.GameContext.GetSingleton().StartCoroutine(SetTextureToUrl(Url, tempTexture1, tempTexture2));
+                        GameLogic.GameContext.GetInstance().StartCoroutine(SetTextureToUrl(Url, tempTexture1, tempTexture2));
                     }
                 }
 

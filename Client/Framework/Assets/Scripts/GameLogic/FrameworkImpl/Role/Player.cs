@@ -56,7 +56,7 @@ namespace GameLogic
     {
         private List<NewGameCharacter> mCharacters;//当前玩家的所有飞机，控制类
         private GameObject mCharacterHold;
-        private PlayerEventManager mEventManager;
+        private PlayerEventProcessor mEventManager;
 
         private Dictionary<int, List<int>> mSuperposition;
 
@@ -66,7 +66,7 @@ namespace GameLogic
         private PlayerState mPlayerState;
         public string mPlayerUiName;
 
-        public PlayerEventManager pEventManager
+        public PlayerEventProcessor pEventManager
         {
             get { return mEventManager; }
             set { mEventManager = value; }
@@ -91,7 +91,7 @@ namespace GameLogic
 
         public Player()
         {
-            mEventManager = new PlayerEventManager(this);
+            mEventManager = new PlayerEventProcessor(this);
             mSuperposition = new Dictionary<int, List<int>>();
             mPlayerData = new PlayerData();
             mCharacters = new List<NewGameCharacter>();
@@ -132,15 +132,15 @@ namespace GameLogic
             set { mIsTrusteeship = value; }
         }
 
-   
-    
+
+
 
         private void NotifyCharacterEnd()
         {
             GameScene mScene = SceneMachine.GetCurrentScene() as GameScene;
             if (mScene != null)
             {
-                mScene.NotifySceneEvent(new SceneEventEx<Player>(SceneEventType.SE_CharacterEnd, this));
+                mScene.NotifySceneEvent(new EventEX<Player>((int)SceneEventType.SE_CharacterEnd, this));
             }
         }
 
@@ -178,14 +178,14 @@ namespace GameLogic
         /// </summary>
         /// <param name="varPET"></param>
         /// <param name="varFun"></param>
-        public void RegisterPlayerEvent(PlayerEventType varType, EventFuntion varFunc)
+        public void RegisterPlayerEvent(PlayerEventType varType, Air2000.EventProcessorHandler varFunc)
         {
             if (mEventManager == null)
             {
-                mEventManager = new PlayerEventManager(this);
+                mEventManager = new PlayerEventProcessor(this);
                 return;
             }
-            mEventManager.RegisterPlayerEvent(varType, varFunc);
+            mEventManager.Register((int)varType, varFunc);
         }
 
         /// <summary>
@@ -193,31 +193,31 @@ namespace GameLogic
         /// </summary>
         /// <param name="varType"></param>
         /// <param name="varFun"></param>
-        public void UnRegisterPlayerEvent(PlayerEventType varType, EventFuntion varFunc)
+        public void UnRegisterPlayerEvent(PlayerEventType varType, Air2000.EventProcessorHandler varFunc)
         {
             if (mEventManager == null)
             {
                 return;
             }
-            mEventManager.UnRegisterPlayerEvent(varType, varFunc);
+            mEventManager.Unregister((int)varType, varFunc);
         }
 
         /// <summary>
         /// 通知角色事件.
         /// </summary>
         /// <param name="varEvent"></param>
-        public void NofityPlayerEvent(PlayerEvent varEvent)
+        public void NofityPlayerEvent(Air2000.Event eventObj)
         {
-            if (varEvent == null)
+            if (eventObj == null)
             {
                 return;
             }
             if (mEventManager == null)
             {
-                Helper.LogError("NotifyPlayerEvent fail caused by null PlayerEventManager,this.name=" + varEvent);
+                Helper.LogError("NotifyPlayerEvent fail caused by null PlayerEventManager");
                 return;
             }
-            mEventManager.NotifyPlayerEvent(varEvent);
+            mEventManager.Notify(eventObj);
         }
     }
 }
