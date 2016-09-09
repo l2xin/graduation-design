@@ -95,8 +95,8 @@ namespace Air2000
         }
         public void Initialize()
         {
-            mGlobalMsgQueue = new EventHandlerQueue(ApplicationEventProcessor.GetInstance());
-            mGlobalMsgQueue.Add((int)ApplicationEventType.GE_LevelWasLoaded, OnLevelLoaded);
+            mGlobalMsgQueue = new EventHandlerQueue(AppEventProcessor.GetInstance());
+            mGlobalMsgQueue.Add((int)AppEventType.GE_LevelWasLoaded, OnLevelLoaded);
             ReadGameSettingConfig();
         }
         #endregion

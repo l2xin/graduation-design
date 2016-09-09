@@ -16,8 +16,7 @@ using System.Text;
 
 namespace Air2000.Module
 {
-    public class ViewController
+    public class ViewController : PropertyObject
     {
-        public Context Context;
     }
 }

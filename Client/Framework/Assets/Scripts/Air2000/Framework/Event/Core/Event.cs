@@ -57,14 +57,14 @@ namespace Air2000
                 handlers = new List<EventProcessorHandler>();
                 handlers.Add(handler);
                 m_Handlers.Add(eventID, handlers);
-                ApplicationEventProcessor.GetInstance().Register(eventID, handler);
+                AppEventProcessor.GetInstance().Register(eventID, handler);
             }
             else
             {
                 if (handlers.Contains(handler) == false)
                 {
                     handlers.Add(handler);
-                    ApplicationEventProcessor.GetInstance().Register(eventID, handler);
+                    AppEventProcessor.GetInstance().Register(eventID, handler);
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace Air2000
             {
                 tmpDels.Clear();
                 m_Handlers.Remove(eventID);
-                ApplicationEventProcessor.GetInstance().Unregister(eventID, handler);
+                AppEventProcessor.GetInstance().Unregister(eventID, handler);
             }
         }
 
@@ -105,7 +105,7 @@ namespace Air2000
                 }
                 for (int j = 0; j < kvp.Value.Count; j++)
                 {
-                    ApplicationEventProcessor.GetInstance().Unregister(kvp.Key, kvp.Value[j]);
+                    AppEventProcessor.GetInstance().Unregister(kvp.Key, kvp.Value[j]);
                 }
             }
             m_Handlers.Clear();

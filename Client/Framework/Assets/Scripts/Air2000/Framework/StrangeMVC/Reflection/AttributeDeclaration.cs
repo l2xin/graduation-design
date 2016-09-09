@@ -17,9 +17,34 @@ namespace Air2000.Module
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class NotSingletonAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
+    public class ContextPropertyAttribute : Attribute
     {
-        public NotSingletonAttribute() { }
+        public Type PropertyType;
+        public ContextPropertyAttribute(Type PropertyType)
+        {
+            this.PropertyType = PropertyType;
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    public class InternalInjectAttribute : Attribute
+    {
+        public InternalInjectAttribute() { }
+
+    }
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    public class ExternalInjectAttribute : Attribute
+    {
+        public ExternalInjectAttribute() { }
+    }
+
+
+
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class SingletonAttribute : Attribute
+    {
+        public SingletonAttribute() { }
     }
 }

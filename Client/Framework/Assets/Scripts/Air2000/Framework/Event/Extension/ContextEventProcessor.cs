@@ -1,8 +1,8 @@
 ﻿/*----------------------------------------------------------------
             // Copyright © 2015 Air2000
             // 
-            // FileName: NetWorkEventManager.cs
-			// Describle: Network event processor.
+            // FileName: ContextEventProcessor.cs
+			// Describle: Context event processor.
 			// Created By:  hsu
 			// Date&Time:  2016/1/19 10:03:15
             // Modify History:
@@ -17,13 +17,13 @@ using Air2000.Module;
 
 namespace Air2000
 {
-    public class ModuleEventProcessor : EventProcessor
+    public class ContextEventProcessor  : EventProcessor
     {
-        private Context m_ModuleContext;
-        public Context ModuleContext
-        {
-            get { return m_ModuleContext; }
-        }
-        private ModuleEventProcessor(Context context) { }
+        //public Context Context { get; set; }
+
+        //public ContextEventProcessor(T contex)
+        //{
+        //    this.Context = contex;
+        //}
     }
 }

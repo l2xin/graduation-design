@@ -99,7 +99,7 @@ namespace Air2000
 
         public override void Begin()
         {
-            ApplicationEventProcessor.GetInstance().Notify(new EventEX<GameScene>((int)ApplicationEventType.GE_SceneBegin, this));
+            AppEventProcessor.GetInstance().Notify(new EventEX<GameScene>((int)AppEventType.GE_SceneBegin, this));
             return;
         }
 
@@ -114,7 +114,7 @@ namespace Air2000
                 GameObject.DestroyObject(mSceneObject);
             }
             Resources.UnloadUnusedAssets();
-            ApplicationEventProcessor.GetInstance().Notify(new EventEX<GameScene>((int)ApplicationEventType.GE_SceneEnd, this));
+            AppEventProcessor.GetInstance().Notify(new EventEX<GameScene>((int)AppEventType.GE_SceneEnd, this));
             return;
         }
     }

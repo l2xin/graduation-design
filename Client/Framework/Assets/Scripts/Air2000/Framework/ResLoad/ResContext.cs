@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Air2000.Module;
-using Air2000;
 
-namespace GameLogic
+namespace Air2000
 {
-    public class LoginController : ContextController
+    public class ResContext<T> : Context<T>
+        where T : ResController
     {
     }
 }

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using Air2000;
 using System;
 using GTools.Res;
+using Air2000.Module;
 
 namespace GameLogic
 {
@@ -58,7 +59,7 @@ namespace GameLogic
 
         void OnLevelWasLoaded()
         {
-            ApplicationEventProcessor.GetInstance().Notify(new Air2000.Event((int)ApplicationEventType.GE_LevelWasLoaded));
+            AppEventProcessor.GetInstance().Notify(new Air2000.Event((int)AppEventType.GE_LevelWasLoaded));
         }
         void OnDestroy()
         {
@@ -106,6 +107,13 @@ namespace GameLogic
             SceneMachine = SceneMachine.GetSingleton();
             SceneMachine.RegisterState(new LoginScene());
             SceneMachine.RegisterState(new MainScene());
+
+            //  ModuleManager.GetInstance().CreateContext<LoginContext>();
+
+            //LoginContext<LoginModuleController, LoginViewController> context = ModuleManager.GetInstance().CreateViewContext<LoginModuleController, LoginViewController>() as LoginContext<LoginModuleController, LoginViewController>;
+
+            LoginContext<LoginController, LoginViewController> loginContext = ContextManager.GetInstance().Add<LoginContext<LoginController, LoginViewController>>();
+            ContextManager.GetInstance().Add<ResContext<ResController>>();
 
             GTools.Res.ResourceManager.ListenInitializeFinish += OnResourceManagerInitialized;
             GTools.Res.ResourceManager.Initialize();

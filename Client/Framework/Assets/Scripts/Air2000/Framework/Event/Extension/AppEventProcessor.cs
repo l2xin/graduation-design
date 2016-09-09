@@ -1,7 +1,7 @@
 ﻿/*----------------------------------------------------------------
             // Copyright © 2015 Air2000
             // 
-            // FileName: ApplicationEventProcessor.cs
+            // FileName: AppEventProcessor.cs
 			// Describle: Application event processor.
 			// Created By:  hsu
 			// Date&Time:  2016/1/19 10:03:15
@@ -16,25 +16,25 @@ using System.Text;
 
 namespace Air2000
 {
-    public class ApplicationEventProcessor : EventProcessor
+    public class AppEventProcessor : EventProcessor
     {
-        public static ApplicationEventProcessor m_Instance;
+        public static AppEventProcessor m_Instance;
         /// <summary>
         /// Get a single instance of type 'ApplicationEventProcessor'
         /// </summary>
         /// <returns></returns>
-        public static ApplicationEventProcessor GetInstance()
+        public static AppEventProcessor GetInstance()
         {
             if (m_Instance == null)
             {
-                m_Instance = new ApplicationEventProcessor();
+                m_Instance = new AppEventProcessor();
             }
             return m_Instance;
         }
-        private ApplicationEventProcessor() { }
+        private AppEventProcessor() { }
     }
 
-    public enum ApplicationEventType
+    public enum AppEventType
     {
         GE_HeroChange,//角色发生切换
         GE_SceneBegin, //场景开始
