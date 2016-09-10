@@ -17,7 +17,7 @@ using System.Reflection;
 using UnityEngine;
 using Air2000;
 
-namespace Air2000.Module
+namespace Air2000.Modular
 {
     public class ContextManager
     {

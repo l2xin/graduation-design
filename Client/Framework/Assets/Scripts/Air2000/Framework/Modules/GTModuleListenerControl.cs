@@ -19,12 +19,12 @@ namespace Air2000
     {
         protected GTView mView;
         protected GTModel mModel;
-        protected AppEventProcessor mGlobalEventManager;
+        protected CrossContextEventProcessor mGlobalEventManager;
         protected NetworkEventProcessor mNetMsgEventManager;
         protected EventHandlerQueue mGlobalMsgQueue;
         protected EventHandlerQueue mNetMsgQueue;
 
-        public AppEventProcessor pGlobalEventManager
+        public CrossContextEventProcessor pGlobalEventManager
         {
             get { return mGlobalEventManager; }
         }
@@ -54,9 +54,9 @@ namespace Air2000
             {
                 varModel.AddListener(this);
             }
-            mGlobalMsgQueue = new EventHandlerQueue(AppEventProcessor.GetInstance());
+            mGlobalMsgQueue = new EventHandlerQueue(CrossContextEventProcessor.GetInstance());
             mNetMsgQueue = new EventHandlerQueue(NetworkEventProcessor.GetInstance());
-            mGlobalEventManager = AppEventProcessor.GetInstance();
+            mGlobalEventManager = CrossContextEventProcessor.GetInstance();
             mNetMsgEventManager = NetworkEventProcessor.GetInstance();
         }
 

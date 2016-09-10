@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Air2000.Module;
+using Air2000.Modular;
 using Air2000;
 
 namespace GameLogic
@@ -11,7 +11,7 @@ namespace GameLogic
     {
         [InternalInject]
         public static LoginContext Context { get; set; }
-        [InternalInject(typeof(ContextController))]
+        [InternalInject]
         public static LoginController Instance { get; set; }
     }
 }

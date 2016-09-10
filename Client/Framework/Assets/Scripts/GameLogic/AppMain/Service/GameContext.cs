@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using Air2000;
 using System;
 using GTools.Res;
-using Air2000.Module;
+using Air2000.Modular;
 
 namespace GameLogic
 {
@@ -59,7 +59,7 @@ namespace GameLogic
 
         void OnLevelWasLoaded()
         {
-            AppEventProcessor.GetInstance().Notify(new Air2000.Event((int)AppEventType.GE_LevelWasLoaded));
+            CrossContextEventProcessor.GetInstance().Notify(new Air2000.Event((int)CrossContextEventType.GE_LevelWasLoaded));
         }
         void OnDestroy()
         {

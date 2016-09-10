@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Air2000;
-using Air2000.Module;
+using Air2000.Modular;
 
 namespace GameLogic
 {

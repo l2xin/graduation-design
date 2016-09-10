@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Air2000.Module
+namespace Air2000.Modular
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class ContextSettingAttribute : Attribute
@@ -21,16 +21,17 @@ namespace Air2000.Module
     public class ContextPropertyAttribute : Attribute
     {
         public Type PropertyType;
-        public string PropertyName;
-        public bool Override = false;
-        public ContextPropertyAttribute(Type PropertyType, bool Override = false, string PropertyName = "")
+        public bool IgnoreInject = false;
+        public ContextPropertyAttribute(Type PropertyType, bool IgnoreInject = false, bool Singleton = true)
         {
             this.PropertyType = PropertyType;
-            this.Override = Override;
-            this.PropertyName = PropertyName;
+            this.IgnoreInject = IgnoreInject;
         }
     }
 
+    /// <summary>
+    /// Legacy property for extension class
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     public class ContextLegacyPropertyAttribute : Attribute
     {
@@ -58,6 +59,11 @@ namespace Air2000.Module
         { this.ContextType = ContextType; }
     }
 
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    public class IgnoreInjectAttribute : Attribute
+    {
+        public IgnoreInjectAttribute() { }
+    }
 
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]

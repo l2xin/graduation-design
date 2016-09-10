@@ -230,7 +230,7 @@ namespace Air2000
             }
         }
 
-        AppEventProcessor mGlobalEventManager;  // 监听界面打开/关闭;
+        CrossContextEventProcessor mGlobalEventManager;  // 监听界面打开/关闭;
         EventHandlerQueue mGlobalEventQueue;
 
         public GameObject pRootObject

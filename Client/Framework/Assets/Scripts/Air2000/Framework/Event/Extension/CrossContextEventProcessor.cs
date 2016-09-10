@@ -1,8 +1,8 @@
 ﻿/*----------------------------------------------------------------
             // Copyright © 2015 Air2000
             // 
-            // FileName: AppEventProcessor.cs
-			// Describle: Application event processor.
+            // FileName: CrossContextEventProcessor.cs
+			// Describle: Cross different contexts' event processor.
 			// Created By:  hsu
 			// Date&Time:  2016/1/19 10:03:15
             // Modify History:
@@ -16,25 +16,25 @@ using System.Text;
 
 namespace Air2000
 {
-    public class AppEventProcessor : EventProcessor
+    public class CrossContextEventProcessor : EventProcessor
     {
-        public static AppEventProcessor m_Instance;
+        public static CrossContextEventProcessor m_Instance;
         /// <summary>
-        /// Get a single instance of type 'ApplicationEventProcessor'
+        /// Get a single instance of type 'CrossContextEventProcessor'
         /// </summary>
         /// <returns></returns>
-        public static AppEventProcessor GetInstance()
+        public static CrossContextEventProcessor GetInstance()
         {
             if (m_Instance == null)
             {
-                m_Instance = new AppEventProcessor();
+                m_Instance = new CrossContextEventProcessor();
             }
             return m_Instance;
         }
-        private AppEventProcessor() { }
+        private CrossContextEventProcessor() { }
     }
 
-    public enum AppEventType
+    public enum CrossContextEventType
     {
         GE_HeroChange,//角色发生切换
         GE_SceneBegin, //场景开始

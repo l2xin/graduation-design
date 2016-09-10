@@ -104,8 +104,8 @@ namespace GameLogic
                 mScene.RegisterSceneEvent(SceneEventType.SE_NotifyConfigCheck, StartConfigCheck);
             }
 
-            mGlobalEventQueue = new EventHandlerQueue(AppEventProcessor.GetInstance());
-            mGlobalEventQueue.Add((int)AppEventType.GE_NetWorkState, OnNetWorkState);
+            mGlobalEventQueue = new EventHandlerQueue(CrossContextEventProcessor.GetInstance());
+            mGlobalEventQueue.Add((int)CrossContextEventType.GE_NetWorkState, OnNetWorkState);
         }
 
         private void OnNetWorkState(Air2000.Event varEvt)

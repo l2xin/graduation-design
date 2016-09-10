@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Air2000.Module
+namespace Air2000.Modular
 {
     public abstract class ViewContext : Context
     {
-        [InternalInject]
-        public ViewController ViewController { get; set; }
+        //[InternalInject]
+        //public ViewController ViewController { get; set; }
         public ViewContext() : base()
         {
         }
