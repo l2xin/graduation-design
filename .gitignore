@@ -5,6 +5,7 @@
 /Docs/2017版本.rar
 /Client/Framework/Library/
 /Client/Framework/Temp/
+/Client/Framework/.vs/
 *.csproj
 *.userprefs
 *.unityproj
