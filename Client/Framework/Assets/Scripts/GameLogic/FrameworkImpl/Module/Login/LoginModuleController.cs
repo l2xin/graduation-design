@@ -9,5 +9,9 @@ namespace GameLogic
 {
     public class LoginController : ContextController
     {
+        [InternalInject]
+        public static LoginContext Context { get; set; }
+        [InternalInject(typeof(ContextController))]
+        public static LoginController Instance { get; set; }
     }
 }

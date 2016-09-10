@@ -36,6 +36,19 @@ namespace Air2000
             MemberInfo[] memberInfos = context.GetType().GetMembers();
             object[] customAttribs = context.GetType().GetCustomAttributes(true);
 
+            ContextLegacyPropertyAttribute[] legacyAttribs = Attribute.GetCustomAttributes(context.GetType(), typeof(ContextLegacyPropertyAttribute), true) as ContextLegacyPropertyAttribute[];
+            if (legacyAttribs != null && legacyAttribs.Length > 0)
+            {
+                for (int i = 0; i < legacyAttribs.Length; i++)
+                {
+                    ContextLegacyPropertyAttribute attrib = legacyAttribs[i];
+                    if (attrib == null) continue;
+                    object prop = Assembly.GetAssembly(attrib.PropertyType).CreateInstance(attrib.PropertyType.FullName);
+                    if (prop == null) continue;
+                    context.GetType().InvokeMember("AddProperty", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { attrib.LegacyPropertyType, prop });
+                }
+            }
+
             ContextPropertyAttribute[] attribs = Attribute.GetCustomAttributes(context.GetType(), typeof(ContextPropertyAttribute), true) as ContextPropertyAttribute[];
             if (attribs != null && attribs.Length > 0)
             {

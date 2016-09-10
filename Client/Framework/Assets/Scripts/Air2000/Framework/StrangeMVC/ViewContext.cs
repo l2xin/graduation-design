@@ -8,8 +8,8 @@ namespace Air2000.Module
 {
     public abstract class ViewContext : Context
     {
+        [InternalInject]
         public ViewController ViewController { get; set; }
-
         public ViewContext() : base()
         {
         }

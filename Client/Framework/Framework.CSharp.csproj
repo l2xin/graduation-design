@@ -863,6 +863,7 @@
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\BaseView.cs" />
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\Login\LoginContext.cs" />
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\Login\LoginModuleController.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\Login\LoginUI.cs" />
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\Login\LoginViewController.cs" />
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Module\ModelManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\FrameworkImpl\Role\CharacterPoolController.cs" />

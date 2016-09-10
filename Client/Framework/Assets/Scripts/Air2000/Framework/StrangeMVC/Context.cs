@@ -23,18 +23,18 @@ namespace Air2000.Module
         [InternalInject]
         public ContextController Controllerer { get; set; }
         public ContextEventProcessor EventProcessor { get; set; }
-        public Dictionary<Type, List<object>> Properties { get; set; }
+        public Dictionary<Type, List<object>> m_Properties { get; set; }
         public Context()
         {
             EventProcessor = new ContextEventProcessor();
-            Properties = new Dictionary<Type, List<object>>();
+            m_Properties = new Dictionary<Type, List<object>>();
             List<object> list = new List<object>();
             list.Add(this);
-            Properties.Add(this.GetType(), list);
+            m_Properties.Add(this.GetType(), list);
 
             list = new List<object>();
             list.Add(EventProcessor);
-            Properties.Add(typeof(ContextEventProcessor), list);
+            m_Properties.Add(typeof(ContextEventProcessor), list);
 
             //Properties = new List<object>();
             //Properties.Add(EventProcessor);
@@ -42,10 +42,10 @@ namespace Air2000.Module
         public ContextController GetController() { return Controllerer; }
         public void AddProperty(Type type, object prop)
         {
-            if (Properties == null) Properties = new Dictionary<Type, List<object>>();
+            if (m_Properties == null) m_Properties = new Dictionary<Type, List<object>>();
 
             List<object> props = null;
-            if (Properties.TryGetValue(type, out props))
+            if (m_Properties.TryGetValue(type, out props))
             {
                 if (props == null) props = new List<object>();
                 if (props.Contains(prop) == false)
@@ -57,14 +57,14 @@ namespace Air2000.Module
             {
                 props = new List<object>();
                 props.Add(prop);
-                Properties.Add(type, props);
+                m_Properties.Add(type, props);
             }
         }
         public object GetProperty(Type type)
         {
-            if (Properties == null) return null;
+            if (m_Properties == null) return null;
             List<object> props = null;
-            if (Properties.TryGetValue(type, out props))
+            if (m_Properties.TryGetValue(type, out props))
             {
                 return props[0];
             }
@@ -72,9 +72,9 @@ namespace Air2000.Module
         }
         public void InternalInject()
         {
-            if (Properties == null) return;
-            Dictionary<Type, List<object>>.Enumerator it = Properties.GetEnumerator();
-            for (int i = 0; i < Properties.Count; i++)
+            if (m_Properties == null) return;
+            Dictionary<Type, List<object>>.Enumerator it = m_Properties.GetEnumerator();
+            for (int i = 0; i < m_Properties.Count; i++)
             {
                 it.MoveNext();
                 KeyValuePair<Type, List<object>> kvp = it.Current;
@@ -85,29 +85,31 @@ namespace Air2000.Module
                     {
                         object prop = props[j];
                         if (prop == null) continue;
-                        MemberInfo[] memberInfos = prop.GetType().GetMembers();
+                        PropertyInfo[] propertyInfos = prop.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
 
-                        if (memberInfos != null && memberInfos.Length > 0)
+                        if (propertyInfos != null && propertyInfos.Length > 0)
                         {
-                            for (int k = 0; k < memberInfos.Length; k++)
+                            for (int k = 0; k < propertyInfos.Length; k++)
                             {
-                                MemberInfo memberInfo = memberInfos[k];
-                                if (memberInfo == null) continue;
-                                InternalInjectAttribute[] internalInjectAttribs = memberInfo.GetCustomAttributes(typeof(InternalInjectAttribute), false) as InternalInjectAttribute[];
+                                PropertyInfo propertyInfo = propertyInfos[k];
+                                if (propertyInfo == null) continue;
+                                InternalInjectAttribute[] internalInjectAttribs = propertyInfo.GetCustomAttributes(typeof(InternalInjectAttribute), false) as InternalInjectAttribute[];
                                 if (internalInjectAttribs != null && internalInjectAttribs.Length > 0)
                                 {
                                     InternalInjectAttribute internalInjectAttrib = internalInjectAttribs[0];
-                                    object value = GetProperty(memberInfo.DeclaringType);
-                                    prop.GetType().InvokeMember(memberInfo.Name, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, prop, new object[] { value });
+                                    object value = null;
+                                    if (internalInjectAttrib.RegionType != null)
+                                    {
+                                        value = GetProperty(internalInjectAttrib.RegionType);
+                                    }
+                                    else
+                                    {
+                                        value = GetProperty(propertyInfo.PropertyType);
+                                    }
+                                    propertyInfo.SetValue(prop, value, null);
                                 }
                             }
                         }
-
-                        //InternalInjectAttribute[] attribs =   if (memberInfos != null && memberInfos.Length > 0)
-                        //{
-
-                        //}
-                        //prop.GetType().InvokeMember("ExecuteInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, prop, new object[] { context });
                     }
                 }
             }

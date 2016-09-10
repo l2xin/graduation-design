@@ -13,8 +13,10 @@ namespace GameLogic
         void Start()
         {
             var appContext = AppContext.GetInstance();
-            appContext.RegisterContext<LoginContext>();
-
+            LoginContext loginContext = appContext.RegisterContext<LoginContext>();
+            loginContext = LoginContext.Instance;
+            LoginController loginController = LoginController.Instance;
+            int a = 1;
             //appContext.UnregisterContext<>
 
 

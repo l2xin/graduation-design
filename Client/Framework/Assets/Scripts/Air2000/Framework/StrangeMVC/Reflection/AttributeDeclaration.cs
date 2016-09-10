@@ -21,17 +21,33 @@ namespace Air2000.Module
     public class ContextPropertyAttribute : Attribute
     {
         public Type PropertyType;
-        public ContextPropertyAttribute(Type PropertyType)
+        public string PropertyName;
+        public bool Override = false;
+        public ContextPropertyAttribute(Type PropertyType, bool Override = false, string PropertyName = "")
         {
             this.PropertyType = PropertyType;
+            this.Override = Override;
+            this.PropertyName = PropertyName;
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
+    public class ContextLegacyPropertyAttribute : Attribute
+    {
+        public Type PropertyType;
+        public Type LegacyPropertyType;
+        public ContextLegacyPropertyAttribute(Type PropertyType, Type LegacyPropertyType)
+        {
+            this.PropertyType = PropertyType;
+            this.LegacyPropertyType = LegacyPropertyType;
         }
     }
 
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     public class InternalInjectAttribute : Attribute
     {
-        public InternalInjectAttribute() { }
-
+        public Type RegionType;
+        public InternalInjectAttribute(Type RegionType = null) { this.RegionType = RegionType; }
     }
 
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]

@@ -121,7 +121,7 @@ namespace GameLogic
 
         void OnResourceManagerInitialized()
         {
-            ConnectionManager.GetInstance().CreateConnection(ConnectionManager.ServerType.Logic, "127.0.0.1", 4999, null);
+            ConnectionManager.GetInstance().CreateConnection(ConnectionManager.ServerType.Logic, "127.0.0.1", 6000, null);
 
             ModelManager.GetSingleton().InitModel();
             AudioAdapter.Instance.Initialize();
