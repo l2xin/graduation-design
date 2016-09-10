@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Air2000.Module
 {
-    public class PropertyObject
+    public abstract class PropertyObject
     {
+        public virtual void ExecuteInject(Context ctx)
+        {
+
+        }
     }
 }

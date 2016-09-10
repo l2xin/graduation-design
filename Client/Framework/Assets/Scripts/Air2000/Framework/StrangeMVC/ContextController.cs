@@ -17,7 +17,7 @@ using Air2000;
 
 namespace Air2000.Module
 {
-    public class ContextController : PropertyObject
+    public abstract class ContextController : PropertyObject
     {
         public EventHandlerQueue AppEventHandlersQueue;
         public EventHandlerQueue NetworkEventHandlersQueue;

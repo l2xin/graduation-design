@@ -16,7 +16,7 @@ using System.Text;
 
 namespace Air2000.Module
 {
-    public class ViewController : PropertyObject
+    public abstract class ViewController : PropertyObject
     {
     }
 }

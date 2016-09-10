@@ -37,7 +37,9 @@ namespace Air2000.Module
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     public class ExternalInjectAttribute : Attribute
     {
-        public ExternalInjectAttribute() { }
+        public Type ContextType;
+        public ExternalInjectAttribute(Type ContextType)
+        { this.ContextType = ContextType; }
     }
 
 

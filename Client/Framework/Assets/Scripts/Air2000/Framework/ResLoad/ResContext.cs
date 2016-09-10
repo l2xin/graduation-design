@@ -6,8 +6,7 @@ using Air2000.Module;
 
 namespace Air2000
 {
-    public class ResContext<T> : Context<T>
-        where T : ResController
+    public class ResContext  : Context 
     {
     }
 }

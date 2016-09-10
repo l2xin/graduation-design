@@ -112,8 +112,8 @@ namespace GameLogic
 
             //LoginContext<LoginModuleController, LoginViewController> context = ModuleManager.GetInstance().CreateViewContext<LoginModuleController, LoginViewController>() as LoginContext<LoginModuleController, LoginViewController>;
 
-            LoginContext<LoginController, LoginViewController> loginContext = ContextManager.GetInstance().Add<LoginContext<LoginController, LoginViewController>>();
-            ContextManager.GetInstance().Add<ResContext<ResController>>();
+            //LoginContext<LoginController, LoginViewController> loginContext = ContextManager.GetInstance().Add<LoginContext<LoginController, LoginViewController>>();
+            //ContextManager.GetInstance().Add<ResContext<ResController>>();
 
             GTools.Res.ResourceManager.ListenInitializeFinish += OnResourceManagerInitialized;
             GTools.Res.ResourceManager.Initialize();
