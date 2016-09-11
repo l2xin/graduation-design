@@ -46,41 +46,25 @@ namespace Air2000.Modular
     public abstract class Context : PropertyObject
     {
         public EventProcessor EventProcessor { get; set; }
-        public Dictionary<PropertyKey, List<object>> m_Properties { get; set; }
+        public Dictionary<PropertyKey, object> m_Properties { get; set; }
 
         public Context()
         {
             EventProcessor = new ContextEventProcessor();
-            m_Properties = new Dictionary<PropertyKey, List<object>>();
-            List<object> list = new List<object>();
+            m_Properties = new Dictionary<PropertyKey, object>();
 
             // add current context to container
-            list.Add(this);
-            m_Properties.Add(new PropertyKey(this.GetType()), list);
+            m_Properties.Add(new PropertyKey(this.GetType()), this);
 
-            list = new List<object>();
-            list.Add(EventProcessor);
-            m_Properties.Add(new PropertyKey(typeof(ContextEventProcessor)), list);
+            m_Properties.Add(new PropertyKey(typeof(ContextEventProcessor)), EventProcessor);
         }
 
         public void AddProperty(PropertyKey key, object prop)
         {
-            if (m_Properties == null) m_Properties = new Dictionary<PropertyKey, List<object>>();
-
-            List<object> props = null;
-            if (m_Properties.TryGetValue(key, out props))
+            object tempProp = null;
+            if (m_Properties.TryGetValue(key, out tempProp) == false)
             {
-                if (props == null) props = new List<object>();
-                if (props.Contains(prop) == false)
-                {
-                    props.Add(prop);
-                }
-            }
-            else
-            {
-                props = new List<object>();
-                props.Add(prop);
-                m_Properties.Add(key, props);
+                m_Properties.Add(key, prop);
             }
         }
 
@@ -88,10 +72,10 @@ namespace Air2000.Modular
         {
             if (m_Properties == null) return null;
             PropertyKey key = new PropertyKey(type);
-            List<object> props = null;
-            if (m_Properties.TryGetValue(key, out props))
+            object prop = null;
+            if (m_Properties.TryGetValue(key, out prop))
             {
-                return props[0];
+                return prop;
             }
             return null;
         }
@@ -99,94 +83,74 @@ namespace Air2000.Modular
         public void InternalInject()
         {
             if (m_Properties == null) return;
-            Dictionary<PropertyKey, List<object>>.Enumerator it = m_Properties.GetEnumerator();
+            Dictionary<PropertyKey, object>.Enumerator it = m_Properties.GetEnumerator();
             for (int i = 0; i < m_Properties.Count; i++)
             {
                 it.MoveNext();
-                KeyValuePair<PropertyKey, List<object>> kvp = it.Current;
+                KeyValuePair<PropertyKey, object> kvp = it.Current;
                 if (kvp.Key.IgnoreInject)
                     continue;
-                List<object> props = kvp.Value;
-                if (props != null && props.Count > 0)
-                {
-                    for (int j = 0; j < props.Count; j++)
-                    {
-                        object prop = props[j];
-                        if (prop == null) continue;
-                        PropertyInfo[] propertyInfos = prop.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
+                object prop = kvp.Value;
+                if (prop == null) continue;
+                PropertyInfo[] propertyInfos = prop.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
 
-                        if (propertyInfos != null && propertyInfos.Length > 0)
+                if (propertyInfos != null && propertyInfos.Length > 0)
+                {
+                    for (int k = 0; k < propertyInfos.Length; k++)
+                    {
+                        PropertyInfo propertyInfo = propertyInfos[k];
+                        if (propertyInfo == null) continue;
+                        InternalInjectAttribute[] internalInjectAttribs = propertyInfo.GetCustomAttributes(typeof(InternalInjectAttribute), false) as InternalInjectAttribute[];
+                        if (internalInjectAttribs != null && internalInjectAttribs.Length > 0)
                         {
-                            for (int k = 0; k < propertyInfos.Length; k++)
+                            InternalInjectAttribute internalInjectAttrib = internalInjectAttribs[0];
+                            object value = null;
+                            if (internalInjectAttrib.RegionType != null)
                             {
-                                PropertyInfo propertyInfo = propertyInfos[k];
-                                if (propertyInfo == null) continue;
-                                InternalInjectAttribute[] internalInjectAttribs = propertyInfo.GetCustomAttributes(typeof(InternalInjectAttribute), false) as InternalInjectAttribute[];
-                                if (internalInjectAttribs != null && internalInjectAttribs.Length > 0)
-                                {
-                                    InternalInjectAttribute internalInjectAttrib = internalInjectAttribs[0];
-                                    object value = null;
-                                    if (internalInjectAttrib.RegionType != null)
-                                    {
-                                        value = GetProperty(internalInjectAttrib.RegionType);
-                                    }
-                                    else
-                                    {
-                                        value = GetProperty(propertyInfo.PropertyType);
-                                    }
-                                    propertyInfo.SetValue(prop, value, null);
-                                }
+                                value = GetProperty(internalInjectAttrib.RegionType);
                             }
+                            else
+                            {
+                                value = GetProperty(propertyInfo.PropertyType);
+                            }
+                            propertyInfo.SetValue(prop, value, null);
                         }
                     }
+
                 }
             }
         }
 
-        public void ExternalInject()
+        public virtual void ExternalInject()
         {
-            Dictionary<PropertyKey, List<object>>.Enumerator it = m_Properties.GetEnumerator();
+            Dictionary<PropertyKey, object>.Enumerator it = m_Properties.GetEnumerator();
             for (int i = 0; i < m_Properties.Count; i++)
             {
                 it.MoveNext();
-                KeyValuePair<PropertyKey, List<object>> kvp = it.Current;
+                KeyValuePair<PropertyKey, object> kvp = it.Current;
                 if (kvp.Key.IgnoreInject)
                     continue;
-                List<object> props = kvp.Value;
-                if (props != null && props.Count > 0)
+                object prop = kvp.Value;
+                if (prop == null) continue;
+                PropertyInfo[] propertyInfos = prop.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
+
+                if (propertyInfos != null && propertyInfos.Length > 0)
                 {
-                    for (int j = 0; j < props.Count; j++)
+                    for (int k = 0; k < propertyInfos.Length; k++)
                     {
-                        object prop = props[j];
-                        if (prop == null) continue;
-                        PropertyInfo[] propertyInfos = prop.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
-
-                        if (propertyInfos != null && propertyInfos.Length > 0)
+                        PropertyInfo propertyInfo = propertyInfos[k];
+                        if (propertyInfo == null) continue;
+                        ExternalInjectAttribute[] externalInjectAttribs = propertyInfo.GetCustomAttributes(typeof(ExternalInjectAttribute), false) as ExternalInjectAttribute[];
+                        if (externalInjectAttribs != null && externalInjectAttribs.Length > 0)
                         {
-                            for (int k = 0; k < propertyInfos.Length; k++)
-                            {
-                                PropertyInfo propertyInfo = propertyInfos[k];
-                                if (propertyInfo == null) continue;
-                                ExternalInjectAttribute[] externalInjectAttribs = propertyInfo.GetCustomAttributes(typeof(ExternalInjectAttribute), false) as ExternalInjectAttribute[];
-                                if (externalInjectAttribs != null && externalInjectAttribs.Length > 0)
-                                {
-                                    ExternalInjectAttribute externalInjectAttrib = externalInjectAttribs[0];
-                                    object targetContext = AppContext.GetContext(externalInjectAttrib.ContextType);
-                                    if (targetContext == null) continue;
-                                    object value = null;
+                            ExternalInjectAttribute externalInjectAttrib = externalInjectAttribs[0];
+                            object targetContext = AppContext.GetContext(externalInjectAttrib.ContextType);
+                            if (targetContext == null) continue;
+                            object value = null;
 
-                                    value = targetContext.GetType().InvokeMember("GetProperty", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, targetContext, new object[] { propertyInfo.PropertyType });
-                                    //if (externalInjectAttrib.RegionType != null)
-                                    //{
-                                    //    value = context.GetProperty(externalInjectAttrib.RegionType);
-                                    //}
-                                    //else
-                                    //{
-                                    //    value = context.GetProperty(propertyInfo.PropertyType);
-                                    //}
-                                    propertyInfo.SetValue(prop, value, null);
-                                }
-                            }
+                            value = targetContext.GetType().InvokeMember("GetProperty", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, targetContext, new object[] { propertyInfo.PropertyType });
+
+                            propertyInfo.SetValue(prop, value, null);
                         }
                     }
                 }

@@ -6,7 +6,7 @@ using Air2000.Modular;
 
 namespace Air2000
 {
-    [ContextProperty(typeof(WindowService))]
+    [RegisterProperty(typeof(WindowService))]
     public class WindowContext : Context
     {
         [InternalInject]

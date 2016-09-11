@@ -6,7 +6,7 @@ using Air2000.Modular;
 
 namespace Air2000
 {
-    [ContextProperty(typeof(NetworkService))]
+    [RegisterProperty(typeof(NetworkService))]
     public class NetworkContext : Context
     {
 

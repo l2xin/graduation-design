@@ -9,8 +9,8 @@ using Air2000.Res;
 
 namespace GameLogic
 {
-    [ContextProperty(typeof(LoginController), false, true)]
-    [ContextProperty(typeof(LoginViewController), false, true)]
+    [RegisterProperty(typeof(LoginController), false, true)]
+    [RegisterProperty(typeof(LoginViewController), false, true)]
     public class LoginContext : ViewContext
     {
         [InternalInject]

@@ -5,25 +5,23 @@ using System.Text;
 using Air2000.Modular;
 using System.Reflection;
 
-namespace Air2000
+namespace Air2000.Modular
 {
-    [RegisterProperty(typeof(AppService))]
-    public class AppContext : Context
+    public class IterationContextWrapper : Context
     {
-        private Dictionary<Type, object> AllContexts;
-        public static AppContext Instance { get; set; }
-        private AppContext() : base()
+        private Dictionary<Type, object> ChildContexts;
+
+        public IterationContextWrapper() : base()
         {
-            Instance = this;
-            AllContexts = new Dictionary<Type, object>();
-            AddProperty(new PropertyKey(this.GetType(), true), AllContexts);
+            ChildContexts = new Dictionary<Type, object>();
+            AddProperty(new PropertyKey(this.GetType(), true), ChildContexts);
         }
 
-        private static T AssemblyContext<T>(object context)
+        private T AssemblyContext<T>(object context)
             where T : Context
         {
             object ctx = null;
-            if (AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx) == true)
+            if (ChildContexts.TryGetValue(typeof(T), out ctx) == true)
             {
                 return ctx as T;
             }
@@ -46,10 +44,10 @@ namespace Air2000
             }
             context.GetType().InvokeMember("InternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { });
 
-            AppContext.Instance.AllContexts.Add(typeof(T), context);
+            ChildContexts.Add(typeof(T), context);
 
-            Dictionary<Type, object>.Enumerator it = AppContext.Instance.AllContexts.GetEnumerator();
-            for (int i = 0; i < AppContext.Instance.AllContexts.Count; i++)
+            Dictionary<Type, object>.Enumerator it = ChildContexts.GetEnumerator();
+            for (int i = 0; i < ChildContexts.Count; i++)
             {
                 it.MoveNext();
                 KeyValuePair<Type, object> kvp = it.Current;
@@ -60,41 +58,39 @@ namespace Air2000
             return context as T;
         }
 
-        public static T RegisterContext<T>()
-            where T : Context
+        public T GetContext<T>()
+            where T : IterationContextWrapper
         {
-            if (AppContext.Instance == null)
-            {
-                AppContext obj = new AppContext();
-                AssemblyContext<AppContext>(obj);
-            }
+            if (ChildContexts == null)
+                return default(T);
+            object ctx = null;
+            ChildContexts.TryGetValue(typeof(T), out ctx);
+            return ctx as T;
+        }
+
+        public object GetContext(Type contextType)
+        {
+            if (ChildContexts == null)
+                return null;
+            object ctx = null;
+            ChildContexts.TryGetValue(contextType, out ctx);
+            return ctx;
+        }
+
+        public T RegisterContext<T>()
+            where T : IterationContextWrapper
+        {
             object context = Assembly.GetAssembly(typeof(T)).CreateInstance(typeof(T).FullName);
             return AssemblyContext<T>(context);
         }
 
-        public static T GetContext<T>()
-            where T : Context
+        public void UnregisterContext<T>()
         {
-            if (AppContext.Instance.AllContexts == null)
-                return default(T);
-            object ctx = null;
-            AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx);
-            return ctx as T;
         }
 
-
-        public static object GetContext(Type contextType)
+        public override void ExternalInject()
         {
-            if (AppContext.Instance.AllContexts == null)
-                return null;
-            object ctx = null;
-            AppContext.Instance.AllContexts.TryGetValue(contextType, out ctx);
-            return ctx;
-        }
-
-        public void UnregisterContext()
-        {
-
+            base.ExternalInject();
         }
     }
 }

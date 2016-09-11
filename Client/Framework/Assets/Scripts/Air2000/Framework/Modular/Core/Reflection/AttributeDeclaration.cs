@@ -18,11 +18,11 @@ namespace Air2000.Modular
     }
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    public class ContextPropertyAttribute : Attribute
+    public class RegisterPropertyAttribute : Attribute
     {
         public Type PropertyType;
         public bool IgnoreInject = false;
-        public ContextPropertyAttribute(Type PropertyType, bool IgnoreInject = false, bool Singleton = true)
+        public RegisterPropertyAttribute(Type PropertyType, bool IgnoreInject = false, bool Singleton = true)
         {
             this.PropertyType = PropertyType;
             this.IgnoreInject = IgnoreInject;
