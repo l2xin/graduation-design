@@ -17,8 +17,7 @@
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -527,11 +526,18 @@
     <Compile Include="Assets\Scripts\Air2000\Framework\Audio\ButtonSFXForNGUI.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Core\Event.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Core\EventProcessor.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\CrossContextEventProcessor.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\ContextEventProcessor.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\CrossContextEventProcessor.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\NetworkEventProcessor.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\PlayerEventProcessor.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\SceneEventProcessor.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Context.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ContextController.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ContextManager.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Object.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Reflection\AttributeDeclaration.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ViewContext.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ViewController.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Application\AppContext.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Application\AppController.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Audio\AudioContext.cs" />
@@ -543,10 +549,6 @@
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Listener\IModelListener.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Listener\IModelManagerListener.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Listener\IViewListener.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Video\VideoContext.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Video\VideoContoller.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\MultiPlayer\GTPlayer.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\MultiPlayer\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Network\CodeMessageSet.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Network\Connection.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Network\ConnectionManager.cs" />
@@ -556,19 +558,18 @@
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Network\SocketConnect.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Res\ResContext.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Res\ResController.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Video\VideoContext.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Video\VideoContoller.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Window\WindowContext.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Window\WindowController.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\MultiPlayer\GTPlayer.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\MultiPlayer\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Core\State.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Core\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Extension\Camera\GameCamera.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Extension\Camera\GameCameraManager.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Extension\Game\Game.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\State\Extension\Game\GameScene.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Context.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ContextController.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ContextManager.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Object.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Reflection\AttributeDeclaration.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ViewContext.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\ViewController.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\View\Component\AnchorAdjust.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\View\Component\ButtonAppearAnimation.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\View\Component\ButtonColorChange.cs" />
@@ -590,8 +591,6 @@
     <Compile Include="Assets\Scripts\Air2000\Framework\View\ScreenTag\ScreenTagManager.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\View\Set3DModelToshow.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\View\WindowManager.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Window\WindowContext.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modules\Window\WindowController.cs" />
     <Compile Include="Assets\Scripts\Air2000\GTools\Animator\Core\Clip.cs" />
     <Compile Include="Assets\Scripts\Air2000\GTools\Animator\Core\ClipAction.cs" />
     <Compile Include="Assets\Scripts\Air2000\GTools\Animator\Core\GTAnimator.cs" />
