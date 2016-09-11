@@ -7,21 +7,23 @@ using System.Reflection;
 
 namespace Air2000.Modular
 {
-    public class IterationContextWrapper : Context
+    public class IterativeContextWrapper : Context
     {
-        private Dictionary<Type, object> ChildContexts;
+        private Dictionary<string, object> m_ChildContexts;
+        public string IdentifyName;
 
-        public IterationContextWrapper() : base()
+        public IterativeContextWrapper(string identifyName) : base()
         {
-            ChildContexts = new Dictionary<Type, object>();
-            AddProperty(new PropertyKey(this.GetType(), true), ChildContexts);
+            this.IdentifyName = identifyName;
+            m_ChildContexts = new Dictionary<string, object>();
+            AddProperty(new PropertyKey(this.GetType(), true), m_ChildContexts);
         }
 
-        private T AssemblyContext<T>(object context)
+        private T AssemblyContext<T>(object context, string identifyName)
             where T : Context
         {
             object ctx = null;
-            if (ChildContexts.TryGetValue(typeof(T), out ctx) == true)
+            if (m_ChildContexts.TryGetValue(identifyName, out ctx) == true)
             {
                 return ctx as T;
             }
@@ -44,13 +46,13 @@ namespace Air2000.Modular
             }
             context.GetType().InvokeMember("InternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { });
 
-            ChildContexts.Add(typeof(T), context);
+            m_ChildContexts.Add(identifyName, context);
 
-            Dictionary<Type, object>.Enumerator it = ChildContexts.GetEnumerator();
-            for (int i = 0; i < ChildContexts.Count; i++)
+            Dictionary<string, object>.Enumerator it = m_ChildContexts.GetEnumerator();
+            for (int i = 0; i < m_ChildContexts.Count; i++)
             {
                 it.MoveNext();
-                KeyValuePair<Type, object> kvp = it.Current;
+                KeyValuePair<string, object> kvp = it.Current;
                 object tempContext = it.Current.Value;
                 if (tempContext == null) continue;
                 tempContext.GetType().InvokeMember("ExternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, tempContext, new object[] { });
@@ -58,30 +60,32 @@ namespace Air2000.Modular
             return context as T;
         }
 
-        public T GetContext<T>()
-            where T : IterationContextWrapper
+        public T GetContext<T>(string identifyName)
+            where T : IterativeContextWrapper
         {
-            if (ChildContexts == null)
+            if (m_ChildContexts == null)
                 return default(T);
             object ctx = null;
-            ChildContexts.TryGetValue(typeof(T), out ctx);
+            m_ChildContexts.TryGetValue(identifyName, out ctx);
             return ctx as T;
         }
 
-        public object GetContext(Type contextType)
+        public object GetContext(string identifyName)
         {
-            if (ChildContexts == null)
+            if (m_ChildContexts == null)
                 return null;
             object ctx = null;
-            ChildContexts.TryGetValue(contextType, out ctx);
+            m_ChildContexts.TryGetValue(identifyName, out ctx);
             return ctx;
         }
 
-        public T RegisterContext<T>()
-            where T : IterationContextWrapper
+        public T RegisterContext<T>(string identifyName)
+            where T : IterativeContextWrapper
         {
-            object context = Assembly.GetAssembly(typeof(T)).CreateInstance(typeof(T).FullName);
-            return AssemblyContext<T>(context);
+            object context = Assembly.GetAssembly(typeof(T)).CreateInstance(typeof(T).FullName, true,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static,
+                null, new object[] { identifyName }, null, null);
+            return AssemblyContext<T>(context, identifyName);
         }
 
         public void UnregisterContext<T>()
@@ -91,6 +95,18 @@ namespace Air2000.Modular
         public override void ExternalInject()
         {
             base.ExternalInject();
+            if (m_ChildContexts != null || m_ChildContexts.Count > 0)
+            {
+                Dictionary<string, object>.Enumerator it = m_ChildContexts.GetEnumerator();
+                for (int i = 0; i < m_ChildContexts.Count; i++)
+                {
+                    it.MoveNext();
+                    KeyValuePair<string, object> kvp = it.Current;
+                    object context = it.Current;
+                    if (context == null) continue;
+                    context.GetType().InvokeMember("ExternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { });
+                }
+            }
         }
     }
 }

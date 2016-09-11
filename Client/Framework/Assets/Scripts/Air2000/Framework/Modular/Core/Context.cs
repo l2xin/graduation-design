@@ -43,8 +43,33 @@ namespace Air2000.Modular
         }
     }
 
+    public class ContextKey
+    {
+        public Type Type;
+        public string IdentifyName;
+        public ContextKey(Type Type, string IdentifyName = "")
+        {
+            this.Type = Type;
+            this.IdentifyName = IdentifyName;
+        }
+        public override bool Equals(object obj)
+        {
+            ContextKey key = obj as ContextKey;
+            if (key != null)
+            {
+                return Type.Equals(key.Type) && IdentifyName == key.IdentifyName;
+            }
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode() + IdentifyName.GetHashCode();
+        }
+    }
+
     public abstract class Context : PropertyObject
     {
+        public static Dictionary<ContextKey, object> ContextContainar = new Dictionary<ContextKey, object>();
         public EventProcessor EventProcessor { get; set; }
         public Dictionary<PropertyKey, object> m_Properties { get; set; }
 

@@ -5,18 +5,14 @@ using System.Text;
 
 namespace Air2000.Modular
 {
-    public class StateMachineContext : Context
+    public class StateMachineContextWrapper : IterativeContextWrapper
     {
-        protected Dictionary<string, StateContext> m_States;
         protected StateContext m_LastState;
         protected StateContext m_CurrentState;
         protected StateContext m_NextState;
 
-        public StateMachineContext() : base()
+        public StateMachineContextWrapper(string identifyName) : base(identifyName)
         {
-            m_States = new Dictionary<string, StateContext>();
-            m_CurrentState = null;
-            m_NextState = null;
         }
 
         public virtual void Update()
@@ -37,83 +33,31 @@ namespace Air2000.Modular
             }
         }
 
-        /// <summary>
-        /// get state with statename
-        /// </summary>
-        /// <param name="stateName"></param>
-        /// <returns></returns>
-        public StateContext GetState(string stateName)
-        {
-            StateContext state = null;
-            if (m_States.TryGetValue(stateName, out state))
-            {
-                return state;
-            }
-            return null;
-        }
 
-        /// <summary>
-        /// register a new state to state machine
-        /// </summary>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public bool RegisterState(StateContext state)
-        {
-            if (state == null)
-            {
-                return false;
-            }
-            string stateName = state.pStateName;
-            if (m_States.ContainsKey(stateName) == true)
-            {
-                return false;
-            }
-            state.pStateMachine = this;
-            m_States.Add(stateName, state);
-            return true;
-        }
-
-        /// <summary>
-        /// unregister state with name
-        /// </summary>
-        /// <param name="stateName"></param>
-        /// <returns></returns>
-        public bool UnRegisterState(string stateName)
-        {
-            StateContext state = null;
-            if (m_States.TryGetValue(stateName, out state) == false)
-            {
-                return false;
-            }
-            state.pStateMachine = null;
-            m_States.Remove(stateName);
-            return true;
-        }
-
-        /// <summary>
-        /// change state
-        /// </summary>
-        /// <param name="stateName"></param>
-        /// <returns></returns>
-        public virtual bool SetNextState(string stateName)
-        {
-            if (string.IsNullOrEmpty(stateName))
-            {
-                return false;
-            }
-            StateContext state = GetState(stateName);
-            if (state == null)
-            {
-                return false;
-            }
-            m_LastState = m_CurrentState;
-            if (state == m_NextState)
-            {
-                return false;
-            }
-            m_NextState = state;
-            return true;
-        }
+        ///// <summary>
+        ///// change state
+        ///// </summary>
+        ///// <param name="stateName"></param>
+        ///// <returns></returns>
+        //public virtual bool SetNextState(string stateName)
+        //{
+        //    if (string.IsNullOrEmpty(stateName))
+        //    {
+        //        return false;
+        //    }
+        //    StateContext state = GetState(stateName);
+        //    if (state == null)
+        //    {
+        //        return false;
+        //    }
+        //    m_LastState = m_CurrentState;
+        //    if (state == m_NextState)
+        //    {
+        //        return false;
+        //    }
+        //    m_NextState = state;
+        //    return true;
+        //}
 
         /// <summary>
         /// get state that will be executed in next frame

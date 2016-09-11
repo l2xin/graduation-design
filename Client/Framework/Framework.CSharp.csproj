@@ -534,7 +534,7 @@
     <Compile Include="Assets\Scripts\Air2000\Framework\Event\Extension\SceneEventProcessor.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Context.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\ContextController.cs" />
-    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\MultiContextWrapper.cs" />
+    <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Iterative\IterativeContextWrapper.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Object.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Core\Reflection\AttributeDeclaration.cs" />
     <Compile Include="Assets\Scripts\Air2000\Framework\Modular\Extensions\Service\ServiceContext.cs" />
@@ -973,8 +973,6 @@
     <None Include="Assets\Scripts\3rdParty\StrangeIoC\scripts\strange\extensions\ReadMe.txt" />
     <None Include="Assets\Scripts\Air2000\GTools\Character\Doc\MotionMachine.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Scripts\Air2000\Framework\Modular\Core\Iteration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

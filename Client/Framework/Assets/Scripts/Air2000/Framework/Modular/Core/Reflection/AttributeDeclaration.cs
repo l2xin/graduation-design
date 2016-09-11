@@ -59,16 +59,35 @@ namespace Air2000.Modular
         { this.ContextType = ContextType; }
     }
 
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    public class GlobalInjectAttribute : Attribute
+    {
+        public Type ContextType;
+        public GlobalInjectAttribute(Type ContextType)
+        { this.ContextType = ContextType; }
+    }
+
     //[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     //public class IgnoreInjectAttribute : Attribute
     //{
     //    public IgnoreInjectAttribute() { }
     //}
 
-
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class SingletonAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+    public class InjectAttribute : Attribute
     {
-        public SingletonAttribute() { }
+        public Type ContextType;
+        public string IdentifyName;
+        public InjectAttribute(Type ContextType = null, string IdentifyName = "")
+        {
+            this.ContextType = ContextType;
+            this.IdentifyName = IdentifyName;
+        }
+        public InjectAttribute(string IdentifyName = "", Type ContextType = null)
+        {
+            this.ContextType = ContextType;
+            this.IdentifyName = IdentifyName;
+        }
     }
 }

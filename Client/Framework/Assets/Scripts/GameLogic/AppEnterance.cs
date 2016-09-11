@@ -33,6 +33,10 @@ namespace Air2000
 
             LoginContext.Instance.NotifyEvent(new EventEX<AppEnterance>(3, this));
 
+            StateMachineContextWrapper stateMachine = new StateMachineContextWrapper("AIStateMachine");
+            stateMachine.RegisterContext<StateContext>("AI_Idle");
+            stateMachine.RegisterContext<StateContext>("AI_Attack");
+
             int a = 1;
             //appContext.UnregisterContext<>
 

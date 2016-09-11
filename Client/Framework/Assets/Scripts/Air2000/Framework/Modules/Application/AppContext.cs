@@ -10,20 +10,20 @@ namespace Air2000
     [RegisterProperty(typeof(AppService))]
     public class AppContext : Context
     {
-        private Dictionary<Type, object> AllContexts;
+        private Dictionary<Type, object> ContextContainar;
         public static AppContext Instance { get; set; }
         private AppContext() : base()
         {
             Instance = this;
-            AllContexts = new Dictionary<Type, object>();
-            AddProperty(new PropertyKey(this.GetType(), true), AllContexts);
+            ContextContainar = new Dictionary<Type, object>();
+            AddProperty(new PropertyKey(this.GetType(), true), ContextContainar);
         }
 
         private static T AssemblyContext<T>(object context)
             where T : Context
         {
             object ctx = null;
-            if (AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx) == true)
+            if (AppContext.Instance.ContextContainar.TryGetValue(typeof(T), out ctx) == true)
             {
                 return ctx as T;
             }
@@ -46,10 +46,10 @@ namespace Air2000
             }
             context.GetType().InvokeMember("InternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { });
 
-            AppContext.Instance.AllContexts.Add(typeof(T), context);
+            AppContext.Instance.ContextContainar.Add(typeof(T), context);
 
-            Dictionary<Type, object>.Enumerator it = AppContext.Instance.AllContexts.GetEnumerator();
-            for (int i = 0; i < AppContext.Instance.AllContexts.Count; i++)
+            Dictionary<Type, object>.Enumerator it = AppContext.Instance.ContextContainar.GetEnumerator();
+            for (int i = 0; i < AppContext.Instance.ContextContainar.Count; i++)
             {
                 it.MoveNext();
                 KeyValuePair<Type, object> kvp = it.Current;
@@ -75,20 +75,20 @@ namespace Air2000
         public static T GetContext<T>()
             where T : Context
         {
-            if (AppContext.Instance.AllContexts == null)
+            if (AppContext.Instance.ContextContainar == null)
                 return default(T);
             object ctx = null;
-            AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx);
+            AppContext.Instance.ContextContainar.TryGetValue(typeof(T), out ctx);
             return ctx as T;
         }
 
 
         public static object GetContext(Type contextType)
         {
-            if (AppContext.Instance.AllContexts == null)
+            if (AppContext.Instance.ContextContainar == null)
                 return null;
             object ctx = null;
-            AppContext.Instance.AllContexts.TryGetValue(contextType, out ctx);
+            AppContext.Instance.ContextContainar.TryGetValue(contextType, out ctx);
             return ctx;
         }
 
