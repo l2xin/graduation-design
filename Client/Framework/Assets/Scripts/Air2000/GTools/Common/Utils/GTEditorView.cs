@@ -82,7 +82,7 @@ namespace Air2000
                 base.Notify(evt);
             }
 
-            public void RegisterEditorEvent(int evtID, EventProcessorHandler func)
+            public void RegisterEditorEvent(int evtID, EventHandlerDelegate func)
             {
                 if (func != null)
                 {
@@ -90,7 +90,7 @@ namespace Air2000
                 }
             }
 
-            public void UnRegisterEditorEvent(int evtID, EventProcessorHandler func)
+            public void UnRegisterEditorEvent(int evtID, EventHandlerDelegate func)
             {
                 if (func != null)
                 {

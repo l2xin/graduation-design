@@ -12,7 +12,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace GTools.Res
+namespace Air2000.Res
 {
     public class EditorUtility
     {

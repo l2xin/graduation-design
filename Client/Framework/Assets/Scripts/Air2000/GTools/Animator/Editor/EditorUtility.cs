@@ -16,7 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     public class EditorUtility
     {

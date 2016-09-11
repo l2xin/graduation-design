@@ -15,7 +15,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [CustomEditor(typeof(EffectRoot))]
     public class InspecEffectRoot : UnityEditor.Editor

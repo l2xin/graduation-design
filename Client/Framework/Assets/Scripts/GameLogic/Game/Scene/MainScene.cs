@@ -105,7 +105,7 @@ namespace GameLogic
             mAsyncOperation = Application.LoadLevelAsync(SceneType.CityScene.ToString());
 
             yield return mAsyncOperation;
-            Air2000.OpenWindowCallBack LoadFinish = delegate (GameObject view, GTools.Res.ResourceLoadParam param)
+            Air2000.OpenWindowCallBack LoadFinish = delegate (GameObject view, Air2000.Res.ResourceLoadParam param)
             {
                 MainViewFinish();
             };

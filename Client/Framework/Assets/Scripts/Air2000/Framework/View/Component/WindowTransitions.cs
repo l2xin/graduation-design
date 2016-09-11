@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Air2000;
-using GTools.ImageEffect;
+using Air2000.ImageEffect;
 
 public class WindowTransitions : MonoBehaviour
 {

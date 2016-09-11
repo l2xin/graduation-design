@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using GTools.Res;
+using Air2000.Res;
 
 namespace Air2000
 {
@@ -622,10 +622,10 @@ namespace Air2000
                 if (firstTask == null)
                 { return; }
                 //   ResourceManager.GetSingleton().LoadAssetBundle(mFilePath, mFileName, mType, OnLoadCallbackPreviosVersion, null);
-                GTools.Res.GameResAdapter.Instance.LoadAssetAsync(firstTask.mFilePath, firstTask.mBundleName, firstTask.mAssetName, firstTask.mType, OnLoadCallback, null);
+                Air2000.Res.GameResAdapter.Instance.LoadAssetAsync(firstTask.mFilePath, firstTask.mBundleName, firstTask.mAssetName, firstTask.mType, OnLoadCallback, null);
             }
 
-            private void OnLoadCallback(UnityEngine.Object varObj, GTools.Res.ResourceLoadParam varParam)
+            private void OnLoadCallback(UnityEngine.Object varObj, Air2000.Res.ResourceLoadParam varParam)
             {
                 GameObjPool.GetSingleton().RemoveTaskQueue(this);
                 if (varObj == null)

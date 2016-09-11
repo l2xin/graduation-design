@@ -15,7 +15,7 @@ using System.Text;
 using UnityEngine;
 using System.IO;
 
-namespace GTools.ImageEffect
+namespace Air2000.ImageEffect
 {
     public class UIGaussianBlurEffect : MonoBehaviour
     {

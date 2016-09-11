@@ -26,8 +26,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Air2000;
 using Air2000.UI;
-using GTools.Res;
-using GTools.ImageEffect;
+using Air2000.Res;
+using Air2000.ImageEffect;
 
 namespace Air2000
 {
@@ -115,7 +115,7 @@ namespace Air2000
     /// </summary>
     /// <param name="view">打开的窗口</param>
     /// <param name="param">回传的参数</param>
-    public delegate void OpenWindowCallBack(GameObject view, GTools.Res.ResourceLoadParam param);
+    public delegate void OpenWindowCallBack(GameObject view, Air2000.Res.ResourceLoadParam param);
 
     public delegate void DelegateNoParam();
     /// <summary>
@@ -465,13 +465,13 @@ namespace Air2000
             if (tempIndex >= 0)
             {
                 //ResourceManager.GetSingleton().LoadUIAssetBundle(windowpath, varWindowName.Substring(tempIndex + 1), typeof(GameObject), callback);
-                ResourceManager.LoadAssetAsync(windowpath, varWindowName.Substring(tempIndex + 1), typeof(GameObject), callback);
+                ResContext.LoadAssetAsync(windowpath, varWindowName.Substring(tempIndex + 1), typeof(GameObject), callback);
 
             }
             else
             {
                 //ResourceManager.GetSingleton().LoadUIAssetBundle(windowpath, varWindowName, typeof(GameObject), callback);
-                ResourceManager.LoadAssetAsync(windowpath, varWindowName, typeof(GameObject), callback);
+                ResContext.LoadAssetAsync(windowpath, varWindowName, typeof(GameObject), callback);
             }
         }
 
@@ -541,7 +541,7 @@ namespace Air2000
            };
 
             Utility.LogDebug("Open Window: " + key);
-            if (ResourceManager.IsResourceMode)
+            if (ResContext.IsResourceMode)
             {
                 ViewResAdapter.Instance.LoadWindowWithResource(key, OpenViewCallback);
             }
@@ -1028,7 +1028,7 @@ namespace Air2000
                 //    //ResourceManager.GetSingleton().LoadUIAssetBundle(tempDialogPath, varDialogName, typeof(GameObject), tempCallback);
                 //    //ResourceManager.LoadAssetAsync(tempDialogPath, varDialogName, typeof(GameObject), tempCallback);
                 //}
-                if (ResourceManager.IsResourceMode)
+                if (ResContext.IsResourceMode)
                 {
                     ViewResAdapter.Instance.LoadWindowWithResource(viewName, tempCallback);
                 }

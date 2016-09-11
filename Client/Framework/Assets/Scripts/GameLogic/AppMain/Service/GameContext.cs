@@ -13,7 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Air2000;
 using System;
-using GTools.Res;
+using Air2000.Res;
 using Air2000.Modular;
 
 namespace GameLogic
@@ -115,8 +115,8 @@ namespace GameLogic
             //LoginContext<LoginController, LoginViewController> loginContext = ContextManager.GetInstance().Add<LoginContext<LoginController, LoginViewController>>();
             //ContextManager.GetInstance().Add<ResContext<ResController>>();
 
-            GTools.Res.ResourceManager.ListenInitializeFinish += OnResourceManagerInitialized;
-            GTools.Res.ResourceManager.Initialize();
+            Air2000.Res.ResContext.ListenInitializeFinish += OnResourceManagerInitialized;
+            Air2000.Res.ResContext.Initialize();
         }
 
         void OnResourceManagerInitialized()
@@ -131,7 +131,7 @@ namespace GameLogic
             ResourceManager.LoadAssetAsync("ui/common/font", "NULL", typeof(TextAsset), OnLoadedUIFont);
             ResourceManager.LoadAssetAsync("ui/common/localization", "Chinese", typeof(TextAsset), OnLoadedUILocalization);
 #else
-            ResourceManager.LoadAssetAsync("Localization/Chinese", string.Empty, typeof(TextAsset), OnLoadedUILocalization);
+            ResContext.LoadAssetAsync("Localization/Chinese", string.Empty, typeof(TextAsset), OnLoadedUILocalization);
 #endif
         }
         void OnLoadedUICommonAtlas(object obj, object param)

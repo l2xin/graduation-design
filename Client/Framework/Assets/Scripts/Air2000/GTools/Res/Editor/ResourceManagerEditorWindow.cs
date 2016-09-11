@@ -11,14 +11,14 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace GTools.Res
+namespace Air2000.Res
 {
     public class ResourceManagerEditorWindow : EditorWindow
     {
         #region declarations
-        public static string AssetBundleConfigName = ResourceManager.ResourceManagerConfigName + ".asset";
+        public static string AssetBundleConfigName = ResContext.ResourceManagerConfigName + ".asset";
         public static string AssetBundleEditorResFolder = "Assets/AssetBundle/Editor/Res/";
-        public static string AssetBundleResFolder = ResourceManager.ResourceManagerResFolder;
+        public static string AssetBundleResFolder = ResContext.ResourceManagerResFolder;
 
         public static ResourceManagerOptions mOptionsData = null;
         #endregion

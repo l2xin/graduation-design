@@ -17,7 +17,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     #region [class]GTAnimator
     public class GTAnimator : MonoBehaviour

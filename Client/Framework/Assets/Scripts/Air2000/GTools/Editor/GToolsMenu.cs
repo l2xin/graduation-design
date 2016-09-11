@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEditor;
 using NCSpeedLight;
 
-namespace GTools.Editor
+namespace Air2000.Editor
 {
     public class GToolsMenu
     {

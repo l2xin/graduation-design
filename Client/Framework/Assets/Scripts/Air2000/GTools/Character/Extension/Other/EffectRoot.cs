@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [AddComponentMenu("GTools/Character/EffectRoot")]
     public class EffectRoot : MonoBehaviour

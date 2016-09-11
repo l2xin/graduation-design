@@ -12,11 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GTools.Character;
+using Air2000.Character;
 using Air2000;
 using UnityEditor;
 using UnityEngine;
-using GTools.Animator;
+using Air2000.Animator;
 
 namespace GameLogic
 {
@@ -33,10 +33,10 @@ namespace GameLogic
         {
             base.OnInspectorGUI();
             if (Instance == null) return;
-            GTools.Character.EditorUtility.BeginContents();
-            if (GTools.Character.EditorUtility.DrawHeader("Base data"))
+            Air2000.Character.EditorUtility.BeginContents();
+            if (Air2000.Character.EditorUtility.DrawHeader("Base data"))
             {
-                GTools.Character.EditorUtility.BeginContents();
+                Air2000.Character.EditorUtility.BeginContents();
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Profession", GUILayout.Width(140f));
                 Instance.EnumProfession = (Profession)EditorGUILayout.EnumPopup(Instance.EnumProfession);
@@ -77,52 +77,52 @@ namespace GameLogic
                 Instance.Animator = (GTAnimator)EditorGUILayout.ObjectField(Instance.Animator, typeof(GTAnimator), true);
                 EditorGUILayout.EndHorizontal();
 
-                GTools.Character.EditorUtility.EndContents();
+                Air2000.Character.EditorUtility.EndContents();
             }
             //GUILayout.Space(1.0f);
-            if (GTools.Character.EditorUtility.DrawHeader("Motion Config"))
+            if (Air2000.Character.EditorUtility.DrawHeader("Motion Config"))
             {
-                GTools.Character.EditorUtility.BeginContents();
+                Air2000.Character.EditorUtility.BeginContents();
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Machine", GUILayout.Width(140f));
-                Instance.MotionMachine = (GTools.Character.MotionMachine)EditorGUILayout.ObjectField(Instance.MotionMachine, typeof(GTools.Character.MotionMachine), true);
+                Instance.MotionMachine = (Air2000.Character.MotionMachine)EditorGUILayout.ObjectField(Instance.MotionMachine, typeof(Air2000.Character.MotionMachine), true);
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Commander", GUILayout.Width(140f));
-                Instance.MotionCommander = (GTools.Character.MotionCommander)EditorGUILayout.ObjectField(Instance.MotionCommander, typeof(GTools.Character.MotionCommander), true);
+                Instance.MotionCommander = (Air2000.Character.MotionCommander)EditorGUILayout.ObjectField(Instance.MotionCommander, typeof(Air2000.Character.MotionCommander), true);
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Crossfader", GUILayout.Width(140f));
-                Instance.MotionCrossfader = (GTools.Character.MotionCrossfader)EditorGUILayout.ObjectField(Instance.MotionCrossfader, typeof(GTools.Character.MotionCrossfader), true);
+                Instance.MotionCrossfader = (Air2000.Character.MotionCrossfader)EditorGUILayout.ObjectField(Instance.MotionCrossfader, typeof(Air2000.Character.MotionCrossfader), true);
                 EditorGUILayout.EndHorizontal();
-                GTools.Character.EditorUtility.EndContents();
+                Air2000.Character.EditorUtility.EndContents();
             }
 
-            if (GTools.Character.EditorUtility.DrawHeader("Global Effect"))
+            if (Air2000.Character.EditorUtility.DrawHeader("Global Effect"))
             {
-                GTools.Character.EditorUtility.BeginContents();
+                Air2000.Character.EditorUtility.BeginContents();
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("FootShadow", GUILayout.Width(140f));
-                Instance.FootShadow = (GTools.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.FootShadow, typeof(GTools.Character.EffectRoot), true);
+                Instance.FootShadow = (Air2000.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.FootShadow, typeof(Air2000.Character.EffectRoot), true);
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("SelfFlow", GUILayout.Width(140f));
-                Instance.SelfFlow = (GTools.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.SelfFlow, typeof(GTools.Character.EffectRoot), true);
+                Instance.SelfFlow = (Air2000.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.SelfFlow, typeof(Air2000.Character.EffectRoot), true);
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Overlap", GUILayout.Width(140f));
-                Instance.Overlap = (GTools.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.Overlap, typeof(GTools.Character.EffectRoot), true);
+                Instance.Overlap = (Air2000.Character.EffectRoot)EditorGUILayout.ObjectField(Instance.Overlap, typeof(Air2000.Character.EffectRoot), true);
                 EditorGUILayout.EndHorizontal();
-                GTools.Character.EditorUtility.EndContents();
+                Air2000.Character.EditorUtility.EndContents();
             }
 
-            if (GTools.Character.EditorUtility.DrawHeader("Controllers"))
+            if (Air2000.Character.EditorUtility.DrawHeader("Controllers"))
             {
-                GTools.Character.EditorUtility.BeginContents();
+                Air2000.Character.EditorUtility.BeginContents();
                 //EditorGUILayout.BeginHorizontal();
                 //EditorGUILayout.LabelField("Grid Collison", GUILayout.Width(140f));
                 //Instance.GridController = (GridCollisionController)EditorGUILayout.ObjectField(Instance.GridController, typeof(GridCollisionController), true);
@@ -137,12 +137,12 @@ namespace GameLogic
                 //EditorGUILayout.LabelField("Face To Screen", GUILayout.Width(140f));
                 //Instance.FaceToScreenController = (FaceToScreenController)EditorGUILayout.ObjectField(Instance.FaceToScreenController, typeof(FaceToScreenController), true);
                 //EditorGUILayout.EndHorizontal();
-                GTools.Character.EditorUtility.EndContents();
+                Air2000.Character.EditorUtility.EndContents();
             }
 
-            if (GTools.Character.EditorUtility.DrawHeader("Animation Operation"))
+            if (Air2000.Character.EditorUtility.DrawHeader("Animation Operation"))
             {
-                GTools.Character.EditorUtility.BeginContents();
+                Air2000.Character.EditorUtility.BeginContents();
 
                 GUILayout.Space(2.0f);
 
@@ -169,7 +169,7 @@ namespace GameLogic
                 //Instance.FaceToScreenController = (FaceToScreenController)EditorGUILayout.ObjectField(Instance.FaceToScreenController, typeof(FaceToScreenController), true);
                 //EditorGUILayout.EndHorizontal();
 
-                GTools.Character.EditorUtility.EndContents();
+                Air2000.Character.EditorUtility.EndContents();
             }
 
             //if (GTools.Character.EditorUtility.DrawHeader("Utility"))
@@ -212,7 +212,7 @@ namespace GameLogic
             //    GTools.Character.EditorUtility.EndContents();
             //}
 
-            GTools.Character.EditorUtility.EndContents();
+            Air2000.Character.EditorUtility.EndContents();
         }
         private void UpdateDependency()
         {
@@ -243,17 +243,17 @@ namespace GameLogic
                     Transform footShadow = effectBundleTran.Find("FootShadow");
                     if (footShadow != null)
                     {
-                        Instance.FootShadow = footShadow.GetComponent<GTools.Character.EffectRoot>();
+                        Instance.FootShadow = footShadow.GetComponent<Air2000.Character.EffectRoot>();
                     }
                     Transform selfFlow = effectBundleTran.Find("SelfFlow");
                     if (selfFlow != null)
                     {
-                        Instance.SelfFlow = selfFlow.GetComponent<GTools.Character.EffectRoot>();
+                        Instance.SelfFlow = selfFlow.GetComponent<Air2000.Character.EffectRoot>();
                     }
                     Transform overlap = effectBundleTran.Find("Overlap");
                     if (overlap != null)
                     {
-                        Instance.Overlap = overlap.GetComponent<GTools.Character.EffectRoot>();
+                        Instance.Overlap = overlap.GetComponent<Air2000.Character.EffectRoot>();
                     }
                 }
             }

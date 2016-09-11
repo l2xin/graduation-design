@@ -15,7 +15,7 @@ using System.Text;
 using ProtoBuf;
 using System.IO;
 using UnityEngine;
-using GTools.Res;
+using Air2000.Res;
 
 namespace Air2000
 {
@@ -106,7 +106,7 @@ namespace Air2000
             {
                 return t;
             }
-            string filePath = ResourceManager.GetSavePath() + "/" + varFileName;
+            string filePath = ResContext.GetSavePath() + "/" + varFileName;
             byte[] bytes = null;
             try
             {

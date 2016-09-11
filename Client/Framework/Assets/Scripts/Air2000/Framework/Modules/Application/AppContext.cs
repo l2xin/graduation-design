@@ -7,51 +7,33 @@ using System.Reflection;
 
 namespace Air2000
 {
+    [ContextProperty(typeof(AppService))]
     public class AppContext : Context
     {
-        private Dictionary<Type, object> m_Contexts;
-        private static AppContext m_Instance;
-
+        private Dictionary<Type, object> AllContexts;
+        public static AppContext Instance { get; set; }
         private AppContext() : base()
         {
-            m_Instance = this;
-        }
-        public static AppContext GetInstance()
-        {
-            if (m_Instance == null)
-            {
-                new AppContext();
-            }
-            return m_Instance;
+            Instance = this;
+            AllContexts = new Dictionary<Type, object>();
+            List<object> list = new List<object>();
+            list.Add(AllContexts);
+            AddProperty(new PropertyKey(this.GetType(), true), list);
+
         }
 
-        public T RegisterContext<T>()
+        private static T AssemblyContext<T>(object context)
             where T : Context
         {
-            if (m_Contexts == null) m_Contexts = new Dictionary<Type, object>();
             object ctx = null;
-            if (m_Contexts.TryGetValue(typeof(T), out ctx) == true)
+            if (AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx) == true)
             {
                 return ctx as T;
             }
-            object context = Assembly.GetAssembly(typeof(T)).CreateInstance(typeof(T).FullName);
 
             FieldInfo[] fieldInfos = context.GetType().GetFields();
             MemberInfo[] memberInfos = context.GetType().GetMembers();
             object[] customAttribs = context.GetType().GetCustomAttributes(true);
-
-            //ContextLegacyPropertyAttribute[] legacyAttribs = Attribute.GetCustomAttributes(context.GetType(), typeof(ContextLegacyPropertyAttribute), true) as ContextLegacyPropertyAttribute[];
-            //if (legacyAttribs != null && legacyAttribs.Length > 0)
-            //{
-            //    for (int i = 0; i < legacyAttribs.Length; i++)
-            //    {
-            //        ContextLegacyPropertyAttribute attrib = legacyAttribs[i];
-            //        if (attrib == null) continue;
-            //        object prop = Assembly.GetAssembly(attrib.PropertyType).CreateInstance(attrib.PropertyType.FullName);
-            //        if (prop == null) continue;
-            //        context.GetType().InvokeMember("AddProperty", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { attrib.LegacyPropertyType, prop });
-            //    }
-            //}
 
             ContextPropertyAttribute[] attribs = Attribute.GetCustomAttributes(context.GetType(), typeof(ContextPropertyAttribute), true) as ContextPropertyAttribute[];
             if (attribs != null && attribs.Length > 0)
@@ -67,73 +49,49 @@ namespace Air2000
             }
             context.GetType().InvokeMember("InternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { });
 
+            AppContext.Instance.AllContexts.Add(typeof(T), context);
 
-            //if (memberInfos != null && memberInfos.Length > 0)
-            //{
-
-            //}
-
-            //InternalInjectAttribute[] internalInjectAttribs = Attribute.GetCustomAttributes(context.GetType(), typeof(InternalInjectAttribute), true) as InternalInjectAttribute[];
-            //if (internalInjectAttribs != null && internalInjectAttribs.Length > 0)
-            //{
-            //    for (int i = 0; i < internalInjectAttribs.Length; i++)
-            //    {
-            //        InternalInjectAttribute attrib = internalInjectAttribs[i];
-            //        if (attrib == null) continue;
-
-            //        object prop = Assembly.GetAssembly(attrib.PropertyType).CreateInstance(attrib.PropertyType.FullName);
-            //        if (prop == null) continue;
-            //        context.GetType().InvokeMember("AddProperty", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, context, new object[] { attrib.PropertyType, prop });
-            //    }
-            //}
-
-
-            //PropertyInfo[] propertyInfos = context.GetType().GetProperties();
-
-
-            m_Contexts.Add(typeof(T), context);
-
-            Dictionary<Type, object>.Enumerator it = m_Contexts.GetEnumerator();
-            for (int i = 0; i < m_Contexts.Count; i++)
+            Dictionary<Type, object>.Enumerator it = AppContext.Instance.AllContexts.GetEnumerator();
+            for (int i = 0; i < AppContext.Instance.AllContexts.Count; i++)
             {
                 it.MoveNext();
                 KeyValuePair<Type, object> kvp = it.Current;
                 object tempContext = it.Current.Value;
                 if (tempContext == null) continue;
-                tempContext.GetType().InvokeMember("ExternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, tempContext, new object[] { this });
-
-                //Dictionary<Type, object>.Enumerator it2 = m_Contexts.GetEnumerator();
-                //for (int j = 0; j < m_Contexts.Count; j++)
-                //{
-                //    it2.MoveNext();
-                //    KeyValuePair<Type, object> kvp2 = it2.Current;
-                //    object tempContext2 = it2.Current.Value;
-                //    if (tempContext2 == null) continue;
-                //    if (tempContext2 == tempContext) continue;
-                //    if (tempContext2 == context) continue;
-                //    tempContext.GetType().InvokeMember("ExternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, tempContext, new object[] { this });
-                //}
+                tempContext.GetType().InvokeMember("ExternalInject", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Instance, null, tempContext, new object[] { });
             }
             return context as T;
         }
 
-        public T GetContext<T>()
+        public static T RegisterContext<T>()
             where T : Context
         {
-            if (m_Contexts == null)
+            if (AppContext.Instance == null)
+            {
+                AppContext obj = new AppContext();
+                AssemblyContext<AppContext>(obj);
+            }
+            object context = Assembly.GetAssembly(typeof(T)).CreateInstance(typeof(T).FullName);
+            return AssemblyContext<T>(context);
+        }
+
+        public static T GetContext<T>()
+            where T : Context
+        {
+            if (AppContext.Instance.AllContexts == null)
                 return default(T);
             object ctx = null;
-            m_Contexts.TryGetValue(typeof(T), out ctx);
+            AppContext.Instance.AllContexts.TryGetValue(typeof(T), out ctx);
             return ctx as T;
         }
 
 
-        public object GetContext(Type contextType)
+        public static object GetContext(Type contextType)
         {
-            if (m_Contexts == null)
+            if (AppContext.Instance.AllContexts == null)
                 return null;
             object ctx = null;
-            m_Contexts.TryGetValue(contextType, out ctx);
+            AppContext.Instance.AllContexts.TryGetValue(contextType, out ctx);
             return ctx;
         }
 

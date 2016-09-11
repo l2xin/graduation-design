@@ -178,7 +178,7 @@ namespace GameLogic
         /// </summary>
         /// <param name="varPET"></param>
         /// <param name="varFun"></param>
-        public void RegisterPlayerEvent(PlayerEventType varType, Air2000.EventProcessorHandler varFunc)
+        public void RegisterPlayerEvent(PlayerEventType varType, Air2000.EventHandlerDelegate varFunc)
         {
             if (mEventManager == null)
             {
@@ -193,7 +193,7 @@ namespace GameLogic
         /// </summary>
         /// <param name="varType"></param>
         /// <param name="varFun"></param>
-        public void UnRegisterPlayerEvent(PlayerEventType varType, Air2000.EventProcessorHandler varFunc)
+        public void UnRegisterPlayerEvent(PlayerEventType varType, Air2000.EventHandlerDelegate varFunc)
         {
             if (mEventManager == null)
             {

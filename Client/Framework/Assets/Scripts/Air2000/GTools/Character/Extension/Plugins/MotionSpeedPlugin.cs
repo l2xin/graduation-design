@@ -17,7 +17,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [Serializable]
     public class MotionSpeedPlugin : MotionPlugin

@@ -16,7 +16,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     public class MotionMachine : MonoBehaviour
     {

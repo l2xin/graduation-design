@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace GTools
+namespace Air2000
 {
     public class VisiableTest : MonoBehaviour
     {

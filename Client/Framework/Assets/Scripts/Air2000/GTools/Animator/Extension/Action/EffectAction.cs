@@ -14,7 +14,7 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     public class EffectAction : ClipAction
     {

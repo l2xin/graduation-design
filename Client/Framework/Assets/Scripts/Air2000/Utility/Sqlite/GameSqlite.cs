@@ -14,7 +14,7 @@ using System.IO;
 using System.Collections;
 using Community.CsharpSqlite;
 using UnityEngine;
-using GTools.Res;
+using Air2000.Res;
 
 namespace Air2000
 {
@@ -118,7 +118,7 @@ namespace Air2000
                 }
             };
 
-            ResourceManager.LoadAssetAsync(filePath, DATABASE_NAME, typeof(TextAsset), tempCallback);
+            ResContext.LoadAssetAsync(filePath, DATABASE_NAME, typeof(TextAsset), tempCallback);
         }
 
         void OnLoadDBFileFinsh(object o, ResourceLoadParam param)
@@ -190,7 +190,7 @@ namespace Air2000
         private bool IsDbExist()
         {
             string filePath = "{0}database/{1}";
-            filePath = Helper.Format(filePath, ResourceManager.GetSavePath(), DATABASE_NAME);
+            filePath = Helper.Format(filePath, ResContext.GetSavePath(), DATABASE_NAME);
 
             if (File.Exists(filePath))
             {

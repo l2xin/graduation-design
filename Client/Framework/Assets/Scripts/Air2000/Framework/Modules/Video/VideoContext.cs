@@ -6,7 +6,7 @@ using Air2000.Modular;
 
 namespace Air2000
 {
-    [ContextProperty(typeof(VideoContoller))]
+    [ContextProperty(typeof(VideoService))]
     public class VideoContext : Context
     {
     }

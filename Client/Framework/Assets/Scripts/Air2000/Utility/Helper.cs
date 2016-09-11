@@ -19,7 +19,7 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using System.IO;
-using GTools.Character;
+using Air2000.Character;
 
 
 namespace Air2000

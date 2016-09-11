@@ -19,7 +19,7 @@ using UnityEditor;
 using GameLogic;
 #endregion
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     #region [enum]RoleMotionType
     [Serializable]

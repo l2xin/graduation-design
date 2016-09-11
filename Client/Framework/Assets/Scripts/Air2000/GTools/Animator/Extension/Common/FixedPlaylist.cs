@@ -17,7 +17,7 @@ using Air2000;
 using GameLogic;
 using System.Reflection;
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     public class FixedPlaylist : MonoBehaviour
     {

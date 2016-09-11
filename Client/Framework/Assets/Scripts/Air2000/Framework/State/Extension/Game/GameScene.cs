@@ -60,7 +60,7 @@ namespace Air2000
         /// </summary>
         /// <param name="evtType"></param>
         /// <param name="func"></param>
-        public void RegisterSceneEvent(SceneEventType evtType, EventProcessorHandler func)
+        public void RegisterSceneEvent(SceneEventType evtType, EventHandlerDelegate func)
         {
             if (mEventManager == null)
             {
@@ -74,7 +74,7 @@ namespace Air2000
         /// </summary>
         /// <param name="evtType"></param>
         /// <param name="func"></param>
-        public void UnRegisterSceneEvent(SceneEventType evtType, EventProcessorHandler func)
+        public void UnRegisterSceneEvent(SceneEventType evtType, EventHandlerDelegate func)
         {
             if (mEventManager == null)
             {

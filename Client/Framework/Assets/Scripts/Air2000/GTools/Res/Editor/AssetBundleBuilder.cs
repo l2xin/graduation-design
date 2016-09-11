@@ -17,7 +17,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
-namespace GTools.Res
+namespace Air2000.Res
 {
     public class AssetBundleBuilder
     {
@@ -123,8 +123,8 @@ namespace GTools.Res
 
         public static void BuildBundleScenes()
         {
-            if (ResourceManager.OptionsData == null) return;
-            string[] levels = ResourceManager.OptionsData.BundleScenes.ToArray();
+            if (ResContext.OptionsData == null) return;
+            string[] levels = ResContext.OptionsData.BundleScenes.ToArray();
             if (levels.Length == 0)
             {
                 Debug.Log("Nothing to build.");

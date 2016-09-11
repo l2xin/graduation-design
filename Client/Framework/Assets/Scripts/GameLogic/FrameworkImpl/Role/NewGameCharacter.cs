@@ -14,8 +14,8 @@ using System.Linq;
 using System.Text;
 using Air2000;
 using UnityEngine;
-using GTools.Animator;
-using GTools.Character;
+using Air2000.Animator;
+using Air2000.Character;
 
 namespace GameLogic
 {
@@ -26,11 +26,11 @@ namespace GameLogic
         public Profession EnumProfession;
 
         [HideInInspector]
-        public GTools.Character.EffectRoot FootShadow;
+        public Air2000.Character.EffectRoot FootShadow;
         [HideInInspector]
-        public GTools.Character.EffectRoot SelfFlow;
+        public Air2000.Character.EffectRoot SelfFlow;
         [HideInInspector]
-        public GTools.Character.EffectRoot Overlap;
+        public Air2000.Character.EffectRoot Overlap;
         [HideInInspector]
         public GTAnimator Animator;
         [NonSerialized]

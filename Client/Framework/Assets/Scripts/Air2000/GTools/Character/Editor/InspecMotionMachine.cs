@@ -15,7 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [CustomEditor(typeof(MotionMachine))]
     public class InspecMotionMachine : UnityEditor.Editor

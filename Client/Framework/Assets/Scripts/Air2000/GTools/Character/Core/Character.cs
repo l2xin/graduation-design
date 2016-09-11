@@ -15,7 +15,7 @@ using System.Text;
 using UnityEngine;
 using System.Reflection;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     public class Character : MonoBehaviour
     {

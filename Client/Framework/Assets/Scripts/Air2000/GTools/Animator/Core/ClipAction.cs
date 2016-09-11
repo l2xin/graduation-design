@@ -16,7 +16,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     [Serializable]
     public class ClipAction

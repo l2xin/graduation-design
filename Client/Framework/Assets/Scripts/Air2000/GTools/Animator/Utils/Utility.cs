@@ -16,7 +16,7 @@
 using System;
 using UnityEngine;
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     public class Utility
     {

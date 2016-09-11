@@ -16,7 +16,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     public class EditorUtility
     {

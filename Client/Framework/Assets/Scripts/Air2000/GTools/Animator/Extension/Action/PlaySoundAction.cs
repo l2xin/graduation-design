@@ -15,7 +15,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace GTools.Animator
+namespace Air2000.Animator
 {
     public enum SoundType
     {

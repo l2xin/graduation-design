@@ -15,7 +15,7 @@ using System.Text;
 using UnityEngine;
 using GameLogic;
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     public class CharacterTest : MonoBehaviour
     {

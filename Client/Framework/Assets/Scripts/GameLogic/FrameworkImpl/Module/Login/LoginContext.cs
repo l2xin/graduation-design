@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using Air2000;
 using Air2000.Modular;
+using Air2000.Res;
 
 namespace GameLogic
 {
@@ -24,15 +25,15 @@ namespace GameLogic
         public ResController ResController { get; set; }
 
         [ExternalInject(typeof(VideoContext))]
-        public VideoContoller VideoContoller { get; set; }
+        public VideoService VideoContoller { get; set; }
 
         [ExternalInject(typeof(AudioContext))]
-        public Air2000.AudioController1 AudioController { get; set; }
+        public Air2000.AudioContext AudioController { get; set; }
 
         [ExternalInject(typeof(NetworkContext))]
-        public NetworkController NetworkController { get; set; }
+        public NetworkService NetworkController { get; set; }
 
         [ExternalInject(typeof(WindowContext))]
-        public WindowController WindowController { get; set; }
+        public WindowService WindowController { get; set; }
     }
 }

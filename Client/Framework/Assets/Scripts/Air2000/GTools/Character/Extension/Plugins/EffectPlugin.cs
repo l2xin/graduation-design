@@ -17,7 +17,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [Serializable]
     public class EffectPlugin : MotionPlugin
@@ -103,7 +103,7 @@ namespace GTools.Character
                 Transform effectRootTran = motion.GetCharacter().GetBodyTransform().Find(RootPath);
                 if (effectRootTran != null)
                 {
-                    GTools.Character.EffectRoot com = effectRootTran.GetComponent<GTools.Character.EffectRoot>();
+                    Air2000.Character.EffectRoot com = effectRootTran.GetComponent<Air2000.Character.EffectRoot>();
                     if (com)
                     {
                         Root = com;

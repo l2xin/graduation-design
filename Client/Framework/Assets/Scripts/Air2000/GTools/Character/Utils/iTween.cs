@@ -38,7 +38,7 @@ using System.Reflection;
 using UnityEngine;
 #endregion
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     /// <summary>
     /// <para>Version: 2.0.43</para>	 

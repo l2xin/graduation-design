@@ -25,7 +25,7 @@ using System.Reflection;
 
 #pragma warning disable 1591
 
-namespace GTools.Character
+namespace Air2000.Character
 {
     [AddComponentMenu("GTools/Character/PoolableObj")]
     public class PoolableObj : MonoBehaviour

@@ -18,17 +18,17 @@ using UnityEngine;
 
 namespace Air2000
 {
-    public delegate void EventProcessorHandler(Event evt);
+    public delegate void EventHandlerDelegate(Event evt);
 
-    public abstract class EventProcessor
+    public class EventProcessor
     {
-        private Dictionary<int, List<EventProcessorHandler>> m_RegisteredHandlers;
-        private List<EventProcessorHandler> m_WillBeDeletedMsgHandlers;
+        private Dictionary<int, List<EventHandlerDelegate>> m_RegisteredHandlers;
+        private List<EventHandlerDelegate> m_WillBeDeletedMsgHandlers;
 
         public EventProcessor()
         {
-            m_RegisteredHandlers = new Dictionary<int, List<EventProcessorHandler>>();
-            m_WillBeDeletedMsgHandlers = new List<EventProcessorHandler>();
+            m_RegisteredHandlers = new Dictionary<int, List<EventHandlerDelegate>>();
+            m_WillBeDeletedMsgHandlers = new List<EventHandlerDelegate>();
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Air2000
             {
                 return -1;
             }
-            List<EventProcessorHandler> handlers = null;
+            List<EventHandlerDelegate> handlers = null;
             if (m_RegisteredHandlers.TryGetValue(eventID, out handlers))
             {
                 return handlers.Count;
@@ -66,14 +66,14 @@ namespace Air2000
         /// <param name="eventObj"></param>
         private void Dispatch(int eventID, Event eventObj)
         {
-            List<EventProcessorHandler> handlers = null;
+            List<EventHandlerDelegate> handlers = null;
             if (m_RegisteredHandlers.TryGetValue(eventID, out handlers))
             {
                 if (m_RegisteredHandlers.Count != 0 && handlers != null)
                 {
                     for (int i = 0; i < m_WillBeDeletedMsgHandlers.Count; i++)
                     {
-                        EventProcessorHandler temRem = m_WillBeDeletedMsgHandlers[i];
+                        EventHandlerDelegate temRem = m_WillBeDeletedMsgHandlers[i];
                         if (handlers.Contains(temRem))
                         {
                             handlers.Remove(temRem);
@@ -86,8 +86,8 @@ namespace Air2000
                 {
                     for (int i = 0; i < handlers.Count; i++)
                     {
-                        EventProcessorHandler handler = handlers[i];
-                        if (handler == null || handler.Target == null)
+                        EventHandlerDelegate handler = handlers[i];
+                        if (handler == null)
                         {
                             m_WillBeDeletedMsgHandlers.Add(handler);
                         }
@@ -106,7 +106,7 @@ namespace Air2000
         /// </summary>
         /// <param name="eventID"></param>
         /// <param name="handler"></param>
-        private void AddHandler(int eventID, EventProcessorHandler handler)
+        private void AddHandler(int eventID, EventHandlerDelegate handler)
         {
             if (handler == null)
             {
@@ -114,12 +114,12 @@ namespace Air2000
             }
             if (m_RegisteredHandlers == null)
             {
-                m_RegisteredHandlers = new Dictionary<int, List<EventProcessorHandler>>();
+                m_RegisteredHandlers = new Dictionary<int, List<EventHandlerDelegate>>();
             }
-            List<EventProcessorHandler> handlers = null;
+            List<EventHandlerDelegate> handlers = null;
             if (m_RegisteredHandlers.TryGetValue((int)eventID, out handlers) == false)
             {
-                handlers = new List<EventProcessorHandler>();
+                handlers = new List<EventHandlerDelegate>();
                 m_RegisteredHandlers.Add(eventID, handlers);
             }
             else
@@ -128,7 +128,7 @@ namespace Air2000
                 {
                     for (int i = 0; i < m_WillBeDeletedMsgHandlers.Count; i++)
                     {
-                        EventProcessorHandler tempHandler = m_WillBeDeletedMsgHandlers[i];
+                        EventHandlerDelegate tempHandler = m_WillBeDeletedMsgHandlers[i];
                         if (handlers.Contains(tempHandler))
                         {
                             handlers.Remove(tempHandler);
@@ -140,7 +140,7 @@ namespace Air2000
             }
             for (int i = 0; i < handlers.Count; i++)
             {
-                EventProcessorHandler tempHandler = handlers[i];
+                EventHandlerDelegate tempHandler = handlers[i];
                 if (tempHandler == handler)
                 {
                     return;
@@ -154,16 +154,16 @@ namespace Air2000
         /// </summary>
         /// <param name="eventID"></param>
         /// <param name="handler"></param>
-        private void RemoveHandler(int eventID, EventProcessorHandler handler)
+        private void RemoveHandler(int eventID, EventHandlerDelegate handler)
         {
-            List<EventProcessorHandler> handlers = null;
+            List<EventHandlerDelegate> handlers = null;
             if (m_RegisteredHandlers.TryGetValue(eventID, out handlers))
             {
                 if (handlers != null && handlers.Count > 0)
                 {
                     for (int i = handlers.Count - 1; i >= 0; --i)
                     {
-                        EventProcessorHandler tempHandler = handlers[i];
+                        EventHandlerDelegate tempHandler = handlers[i];
                         if (tempHandler == null || tempHandler.Target == null)
                         {
                             m_WillBeDeletedMsgHandlers.Add(tempHandler);
@@ -205,7 +205,7 @@ namespace Air2000
             {
                 return;
             }
-            Dispatch((int)eventObj.EventID, eventObj);
+            Dispatch(eventObj.EventID, eventObj);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Air2000
         /// </summary>
         /// <param name="eventID"></param>
         /// <param name="handler"></param>
-        public void Register(int eventID, EventProcessorHandler handler)
+        public void Register(int eventID, EventHandlerDelegate handler)
         {
             if (handler != null)
             {
@@ -226,7 +226,7 @@ namespace Air2000
         /// </summary>
         /// <param name="eventID"></param>
         /// <param name="handler"></param>
-        public void Unregister(int eventID, EventProcessorHandler handler)
+        public void Unregister(int eventID, EventHandlerDelegate handler)
         {
             if (handler != null)
             {

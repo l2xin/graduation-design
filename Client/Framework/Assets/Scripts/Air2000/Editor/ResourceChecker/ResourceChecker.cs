@@ -16,7 +16,7 @@ using UnityEditor;
 using System.IO;
 using System.Reflection;
 
-namespace GTools.Res
+namespace Air2000.Res
 {
     public class ArtFindSet
     {

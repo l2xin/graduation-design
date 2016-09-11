@@ -32,16 +32,16 @@ namespace Air2000
 
     public class EventHandlerQueue
     {
-        private Dictionary<int, List<EventProcessorHandler>> m_Handlers;
+        private Dictionary<int, List<EventHandlerDelegate>> m_Handlers;
         private EventProcessor m_Processor;
 
         public EventHandlerQueue(EventProcessor processor)
         {
-            m_Handlers = new Dictionary<int, List<EventProcessorHandler>>();
+            m_Handlers = new Dictionary<int, List<EventHandlerDelegate>>();
             m_Processor = processor;
         }
 
-        public void Add(int eventID, EventProcessorHandler handler)
+        public void Add(int eventID, EventHandlerDelegate handler)
         {
             if (handler == null)
             {
@@ -49,12 +49,12 @@ namespace Air2000
             }
             if (m_Handlers == null)
             {
-                m_Handlers = new Dictionary<int, List<EventProcessorHandler>>();
+                m_Handlers = new Dictionary<int, List<EventHandlerDelegate>>();
             }
-            List<EventProcessorHandler> handlers = null;
+            List<EventHandlerDelegate> handlers = null;
             if (m_Handlers.TryGetValue(eventID, out handlers) == false)
             {
-                handlers = new List<EventProcessorHandler>();
+                handlers = new List<EventHandlerDelegate>();
                 handlers.Add(handler);
                 m_Handlers.Add(eventID, handlers);
                 CrossContextEventProcessor.GetInstance().Register(eventID, handler);
@@ -69,7 +69,7 @@ namespace Air2000
             }
         }
 
-        public void Remove(int eventID, EventProcessorHandler handler)
+        public void Remove(int eventID, EventHandlerDelegate handler)
         {
             if (handler == null)
             {
@@ -79,7 +79,7 @@ namespace Air2000
             {
                 return;
             }
-            List<EventProcessorHandler> tmpDels = null;
+            List<EventHandlerDelegate> tmpDels = null;
             if (m_Handlers.TryGetValue(eventID, out tmpDels))
             {
                 tmpDels.Clear();
@@ -94,11 +94,11 @@ namespace Air2000
             {
                 return;
             }
-            Dictionary<int, List<EventProcessorHandler>>.Enumerator it = m_Handlers.GetEnumerator();
+            Dictionary<int, List<EventHandlerDelegate>>.Enumerator it = m_Handlers.GetEnumerator();
             for (int i = 0; i < m_Handlers.Count; i++)
             {
                 it.MoveNext();
-                KeyValuePair<int, List<EventProcessorHandler>> kvp = it.Current;
+                KeyValuePair<int, List<EventHandlerDelegate>> kvp = it.Current;
                 if (kvp.Value == null || kvp.Value.Count == 0)
                 {
                     continue;

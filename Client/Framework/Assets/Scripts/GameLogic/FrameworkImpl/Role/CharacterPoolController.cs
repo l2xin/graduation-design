@@ -13,9 +13,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using GTools.Character;
+using Air2000.Character;
 using Air2000;
-using GTools.Res;
+using Air2000.Res;
 namespace GameLogic
 {
     public class CharacterPoolController : MonoBehaviour
@@ -29,7 +29,7 @@ namespace GameLogic
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            ResourceManager.ListenInitializeFinish += OnResManagerInited;
+            ResContext.ListenInitializeFinish += OnResManagerInited;
         }
         void OnResManagerInited()
         {
@@ -39,7 +39,7 @@ namespace GameLogic
 #else
             shuaishuai_prefab_path = "Model/Role/Boy_shuai/Shuaishuai(Merged)";
 #endif
-            ResourceManager.LoadAssetAsync(shuaishuai_prefab_path, "Shuaishuai(Merged)", typeof(GameObject), OnLoadShuaishuai);
+            ResContext.LoadAssetAsync(shuaishuai_prefab_path, "Shuaishuai(Merged)", typeof(GameObject), OnLoadShuaishuai);
 
             string Joe_prefab_path;
 #if ASSETBUNDLE_MODE
@@ -47,7 +47,7 @@ namespace GameLogic
 #else
             Joe_prefab_path = "Model/Role/Joe/Joe(Merged)";
 #endif
-            ResourceManager.LoadAssetAsync(Joe_prefab_path, "Joe(Merged)", typeof(GameObject), OnLoadJoe);
+            ResContext.LoadAssetAsync(Joe_prefab_path, "Joe(Merged)", typeof(GameObject), OnLoadJoe);
 
             string Mage_prefab_path = "role/mage";
 #if ASSETBUNDLE_MODE
@@ -55,7 +55,7 @@ namespace GameLogic
 #else
             Mage_prefab_path = "Model/Role/Mage/Mage(Merged)";
 #endif
-            ResourceManager.LoadAssetAsync(Mage_prefab_path, "Mage(Merged)", typeof(GameObject), OnLoadMage);
+            ResContext.LoadAssetAsync(Mage_prefab_path, "Mage(Merged)", typeof(GameObject), OnLoadMage);
 
             string LittleSister_prefab_path = "role/littlesister";
 #if ASSETBUNDLE_MODE
@@ -63,7 +63,7 @@ namespace GameLogic
 #else
             LittleSister_prefab_path = "Model/Role/Little_girl/LittleSister(Merged)";
 #endif
-            ResourceManager.LoadAssetAsync(LittleSister_prefab_path, "LittleSister(Merged)", typeof(GameObject), OnLoadLittleSister);
+            ResContext.LoadAssetAsync(LittleSister_prefab_path, "LittleSister(Merged)", typeof(GameObject), OnLoadLittleSister);
         }
         void Start()
         {
@@ -128,7 +128,7 @@ namespace GameLogic
             }
             if (GUI.Button(new Rect(300, 90, 150, 30), "Character Appear"))
             {
-                CurrentCharacter.Appear(new Vector3(1.2f, 0.6f, 0.5f), GTools.Character.CharacterCommand.CC_Appear);
+                CurrentCharacter.Appear(new Vector3(1.2f, 0.6f, 0.5f), Air2000.Character.CharacterCommand.CC_Appear);
             }
         }
 #endif
